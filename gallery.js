@@ -135,10 +135,9 @@
       autoplayToggle.hidden = slides.length < 2 || reducedMotion.matches;
       autoplayToggle.textContent = autoplayPaused ? "Play slides" : "Pause slides";
       autoplayToggle.setAttribute("aria-label", autoplayPaused ? "Play automatic slideshow" : "Pause automatic slideshow");
-      const hoveringGallery = media.matches(":hover") && !autoplayToggle.matches(":hover");
       const focusingGallery = media.contains(document.activeElement) && document.activeElement !== autoplayToggle;
       if (!dialog.open || zoom.open || slides.length < 2 || autoplayPaused || reducedMotion.matches
-        || document.hidden || hoveringGallery || focusingGallery) return;
+        || document.hidden || focusingGallery) return;
       autoplayTimer = window.setTimeout(() => move(1, true), autoplayDelay);
     }
 
@@ -146,9 +145,6 @@
       autoplayPaused = !autoplayPaused;
       updateAutoplay();
     });
-    media.addEventListener("mouseenter", updateAutoplay);
-    media.addEventListener("mouseleave", updateAutoplay);
-    media.addEventListener("pointermove", updateAutoplay);
     media.addEventListener("focusin", updateAutoplay);
     media.addEventListener("focusout", () => queueMicrotask(updateAutoplay));
     document.addEventListener("visibilitychange", updateAutoplay);
