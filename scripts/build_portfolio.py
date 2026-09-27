@@ -82,7 +82,7 @@ def render_card(project: dict) -> str:
     detail = "./" + project["detail"]
     demo = "./" + project["demo"]["href"]
     visual_class = {"automation": "visual--automation", "web-development": "visual--web", "data-operations": "visual--data"}[project["category"]]
-    card_class = "chapter-project chapter-project--secondary" if project.get("secondary") else "chapter-project"
+    card_class = "chapter-project"
     stack = "".join(f"<li>{esc(skill)}</li>" for skill in project["stack"])
     code_link = (
         f'<a class="chapter-project-code" href="{esc(project["code_url"])}">View code <span aria-hidden="true">↗</span></a>'

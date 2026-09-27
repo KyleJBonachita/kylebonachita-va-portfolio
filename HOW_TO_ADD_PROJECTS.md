@@ -8,7 +8,7 @@ You can update the cards and galleries by editing one file: `projects.json`. The
 2. Copy `templates/project-case.html` to `work/your-project-id.html`. Replace all `[BRACKETED FIELDS]` with the problem, what you built, the operating procedure, verified outcome, and current limits. The project ID should be lowercase with hyphens, such as `inventory-sync`.
 3. Add an entry to the `projects` array in `projects.json`. Choose `automation`, `web-development`, or `data-operations` for `category`. Put the card in the order you want it to appear within that section.
 
-For a supporting project that should appear as a full-width card after the main examples, add `"secondary": true` to its entry and place it last in that category. Keep your most client-relevant work first.
+Cards use a two-column grid on wide screens. If a section has an odd number of projects, the final card stays at normal card width and centers itself. Adding a sixth project fills the last row with two normal cards. Put your most client-relevant work first.
 
 Here is a complete starter entry. Replace its text and paths with your own:
 

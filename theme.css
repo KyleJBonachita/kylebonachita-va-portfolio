@@ -263,10 +263,9 @@ html[data-theme="light"] .chapter--data { --chapter: #167856; --chapter-tint: #d
   transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
 }
 .chapter-project:first-child { border-top: 1px solid color-mix(in srgb, var(--chapter) 29%, transparent); }
-.chapter-project--secondary { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, .42fr) minmax(0, .58fr); }
-.chapter-project--secondary .chapter-project-visual { height: 100%; aspect-ratio: auto; border-right: 1px solid color-mix(in srgb, var(--chapter) 25%, transparent); border-bottom: 0; }
-.chapter-project--secondary .chapter-project-content { min-width: 0; }
-.chapter-project--secondary .chapter-project-content h3 { font-size: clamp(27px, 2.6vw, 36px); }
+/* Center an unpaired final card at the same width as its siblings. A sixth card
+   naturally fills the next grid cell and leaves this rule inactive. */
+.chapter-projects > article.chapter-project:last-of-type:nth-of-type(odd) { grid-column: 1 / -1; width: calc((100% - 18px) / 2); justify-self: center; }
 .chapter-project:hover, .chapter-project:focus-within { border-color: var(--chapter); transform: translateY(-4px); box-shadow: 0 14px 35px #0002; }
 .chapter-project-visual { width: 100%; min-height: 0; aspect-ratio: 1.9 / 1; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--chapter) 25%, transparent); border-radius: 0; background-color: var(--chapter-tint); }
 .chapter-project-visual::before { border-color: var(--chapter); background: var(--chapter-card); }
@@ -298,7 +297,6 @@ html[data-theme="light"] .chapter--data { --chapter: #167856; --chapter-tint: #d
 .flow-art-card small { display: block; margin-top: 5px; color: #bfcee8; font-size: 11px; font-weight: 500; }
 @media (max-width: 900px) {
   .chapter-project { display: flex; }
-  .chapter-project--secondary { display: grid; }
   .chapter-project-visual { aspect-ratio: 1.65 / 1; }
 }
 @media (max-width: 700px) {
@@ -310,8 +308,7 @@ html[data-theme="light"] .chapter--data { --chapter: #167856; --chapter-tint: #d
   .chapter-heading .chapter-title { font-size: clamp(46px, 9vw, 60px); scroll-margin-top: 178px; }
   .chapter-heading .chapter-intro { font-size: 15px; }
   .chapter-projects { grid-template-columns: 1fr; gap: 14px; }
-  .chapter-project--secondary { grid-column: 1; display: flex; }
-  .chapter-project--secondary .chapter-project-visual { height: auto; aspect-ratio: 1.8 / 1; border-right: 0; border-bottom: 1px solid color-mix(in srgb, var(--chapter) 25%, transparent); }
+  .chapter-projects > article.chapter-project:last-of-type:nth-of-type(odd) { grid-column: 1; width: 100%; }
   .chapter-project-content { padding: 19px 19px 23px; }
   .chapter-project-visual { aspect-ratio: 1.8 / 1; }
   .chapter-note { grid-column: 1; }

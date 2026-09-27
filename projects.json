@@ -236,7 +236,7 @@
     {
       "id": "nvgs-server",
       "category": "web-development",
-      "title": "NVGS Server",
+      "title": "NVGS Ticketing System",
       "meta": [
         "Public source",
         "Ticketing pilot"
@@ -677,7 +677,6 @@
     {
       "id": "ocsvm-anomaly",
       "category": "data-operations",
-      "secondary": true,
       "title": "Transaction Review (ML Study)",
       "meta": [
         "Earlier technical study",
