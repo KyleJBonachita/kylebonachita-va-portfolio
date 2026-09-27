@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#102b26">
-  <meta name="description" content="A reproducible hotel booking quality check by Kyle Josef M. Bonachita: 36,275 reservations reconciled across date and stay-length rules, with a synthetic review queue demo.">
-  <title>Hotel Booking QA | Kyle Josef M. Bonachita</title>
+  <meta name="description" content="Hotel booking record review by Kyle Josef M. Bonachita: 36,275 reservation rows filtered for invalid dates and zero-night stays, with a synthetic follow-up queue.">
+  <title>Hotel Booking Record Review | Kyle Josef M. Bonachita</title>
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <script src="../theme.js"></script>
   <link rel="stylesheet" href="../styles.css">
@@ -27,20 +27,20 @@
     <section class="page-hero hq-hero"><div class="container">
       <a class="breadcrumb" href="../index.html#data-operations">← Back to data operations</a>
       <p class="eyebrow">DATA OPERATIONS / PORTFOLIO EXERCISE</p>
-      <h1>Hotel Booking QA</h1>
-      <p class="page-lead">A reproducible check of arrival dates and stay lengths in a 36,275-row reservations CSV. The result is a small, traceable review queue and a count that reconciles to the source.</p>
+      <h1>Hotel booking record review</h1>
+      <p class="page-lead">A practical reservation-file task: check 36,275 booking rows, filter invalid arrival dates and zero-night stays into a follow-up list, and reconcile the total against the source.</p>
       <dl class="case-facts"><div><dt>SOURCE</dt><dd>User-provided hotel reservations dataset</dd></div><div><dt>MY WORK</dt><dd>Rules, Python CLI, review flow, interface</dd></div><div><dt>TOOLS</dt><dd>Python, CSV, JSON, JavaScript</dd></div><div><dt>OUTPUT</dt><dd>Aggregate counts and synthetic demo</dd></div></dl>
     </div></section>
 
     <section class="hq-section" aria-labelledby="hq-overview-title"><div class="container">
       <div class="hq-section-heading"><div><p class="eyebrow">01 / RESULT</p><h2 id="hq-overview-title">Every row has an outcome.</h2></div><p>These findings cover two checks only: calendar-valid arrival dates and stays with at least one night. They are not a full audit of reservation accuracy.</p></div>
-      <div class="hq-kpis" aria-label="Booking quality summary">
+      <div class="hq-kpis" aria-label="Booking record review summary">
         <div class="hq-kpi"><span>Source rows</span><strong data-metric="rows">36,275</strong><small>CSV records examined</small></div>
         <div class="hq-kpi hq-kpi-review"><span>Needs review</span><strong data-metric="review">115</strong><small>Either check flagged a row</small></div>
         <div class="hq-kpi"><span>Passed these checks</span><strong data-metric="passes_checked_rules">36,160</strong><small>No issue found by these rules</small></div>
       </div>
       <div class="hq-reconcile"><div><span class="hq-reconcile-label">RECONCILIATION</span><p><strong data-metric="passes_checked_rules">36,160</strong> passed + <strong data-metric="review">115</strong> review = <strong data-metric="rows">36,275</strong> source rows</p></div><span class="hq-reconcile-check" aria-label="Counts reconcile">✓</span></div>
-      <div class="case-detail"><h2>Why I built this check</h2><div><p>An impossible arrival date or a booking with no nights cannot be interpreted reliably without a human decision. I built a repeatable validation pass to isolate those cases and prove that every source row is accounted for. The 115 flagged rows are 0.32% of this file; that is a review rate for two rules, not an improvement percentage.</p></div></div>
+      <div class="case-detail"><h2>Why this matters to a client</h2><div><p>A reservations assistant needs a clean list of records to follow up without losing or guessing at customer information. I built a repeatable check that keeps the source intact, attaches a reason to each flagged row, and accounts for every booking. The 115 flagged rows are 0.32% of this file; that is a review rate for two rules, not an improvement percentage.</p></div></div>
     </div></section>
 
     <section class="hq-section hq-section-tinted" aria-labelledby="hq-process-title"><div class="container">
@@ -48,7 +48,7 @@
       <ol class="hq-flow"><li><span>01</span><strong>Read source</strong><p>Check required columns and stream each booking row.</p></li><li><span>02</span><strong>Apply rules</strong><p>Validate the calendar date and total nights.</p></li><li><span>03</span><strong>Queue exceptions</strong><p>Count each reason and any overlap.</p></li><li><span>04</span><strong>Reconcile</strong><p>Confirm passed plus review equals all rows.</p></li></ol>
       <div class="hq-rules"><article><span class="hq-rule-index">RULE 01</span><h3>Invalid arrival date</h3><p>Build a real calendar date from year, month, and day. A date such as February 29, 2018 fails because 2018 was not a leap year.</p><div class="hq-rule-count"><strong data-metric="invalid_arrival_date">37</strong><span>rows flagged</span></div></article><article><span class="hq-rule-index">RULE 02</span><h3>Zero-night stay</h3><p>Add weekend and weekday nights. A reservation with zero of both enters review because it has no booked stay length.</p><div class="hq-rule-count"><strong data-metric="zero_night_stay">78</strong><span>rows flagged</span></div></article></div>
       <p class="hq-method-note">No rows triggered both findings in this dataset. The script also guards against missing, non-numeric, or negative night counts; none appeared in this source.</p>
-      <div class="case-detail" id="workflow"><h2>Operating procedure</h2><div><ol class="case-sop"><li><strong>Check the input</strong><p>Confirm the required date and night columns before running the local Python script.</p></li><li><strong>Run and reconcile</strong><p>Review the aggregate JSON; rows that pass these rules plus rows for review must equal source rows.</p></li><li><strong>Handle exceptions privately</strong><p>If row-level follow-up is needed, create the optional local review CSV outside the site. Investigate flagged records against the source before deciding whether to correct them.</p></li><li><strong>Record the decision and rerun</strong><p>For a real processing task, document each approved correction, rerun the checks, and preserve the before-and-after counts.</p></li></ol><a class="case-inline-link" href="#demo">Try the synthetic review queue ↗</a></div></div>
+      <div class="case-detail" id="workflow"><h2>Operating procedure</h2><div><ol class="case-sop"><li><strong>Check the input</strong><p>Confirm the required date and night columns before running the local Python script.</p></li><li><strong>Filter and reconcile</strong><p>Review the aggregate JSON; rows that pass these rules plus rows for review must equal source rows.</p></li><li><strong>Follow up privately</strong><p>If row-level follow-up is needed, create the optional local review CSV outside the site. Check each flagged booking against its source before changing or removing a record.</p></li><li><strong>Record the decision and rerun</strong><p>For a real processing task, document each approved correction, rerun the checks, and preserve the before-and-after counts.</p></li></ol><a class="case-inline-link" href="#demo">Try the synthetic review queue ↗</a></div></div>
     </div></section>
 
     <section class="hq-section" id="demo" aria-labelledby="hq-demo-title"><div class="container">
@@ -62,7 +62,7 @@
         </tbody></table></div>
         <div class="hq-demo-bottom"><p id="hq-filter-status" role="status" aria-live="polite">Showing all 3 invented examples.</p><button class="button button-outline" type="button" id="hq-download">Download sample review CSV <span aria-hidden="true">↓</span></button></div>
       </div>
-      <div class="hq-next"><div><p class="eyebrow">REPRODUCE THE CHECK</p><h3>Run the audit on a local CSV.</h3><p>The command writes aggregate JSON and an optional private review CSV with source identifiers and rule reasons. Save that review file outside this repository; this site contains neither source rows nor the private export.</p></div><div class="hq-code"><code>python scripts/hotel_qa.py input.csv summary.json --review-csv ../private-review.csv</code><a href="../scripts/hotel_qa.py" download>View Python script ↗</a></div></div>
+      <div class="hq-next"><div><p class="eyebrow">REPRODUCE THE CHECK</p><h3>Review a local booking CSV.</h3><p>The command writes aggregate JSON and an optional private review CSV with source identifiers and rule reasons. Save that review file outside this repository; this site contains neither source rows nor the private export.</p></div><div class="hq-code"><code>python scripts/hotel_qa.py input.csv summary.json --review-csv ../private-review.csv</code><a href="../scripts/hotel_qa.py" download>View Python script ↗</a></div></div>
       <div class="case-status"><strong>Scope:</strong> This is a portfolio exercise using a dataset supplied for demonstration. The counts describe the two named checks. The table and downloadable CSV use invented rows only.</div>
     </div></section>
     <div class="container next-project"><span>MORE DATA WORK</span><a href="./data-cleanup.html">Open the inventory data lab ↗</a></div>

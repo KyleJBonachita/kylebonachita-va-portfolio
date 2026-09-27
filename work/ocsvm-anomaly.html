@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0d141b">
-  <meta name="description" content="OC-SVM Anomaly Detection case study by Kyle Josef M. Bonachita: preprocessing, feature scaling, and parameter search for credit card transaction anomalies.">
-  <title>OC-SVM Anomaly Detection | Kyle Josef M. Bonachita</title>
+  <meta name="description" content="Earlier transaction data review study by Kyle Josef M. Bonachita: preparing records and using One-Class SVM to prioritize unusual cases for human review.">
+  <title>Transaction Review (ML Study) | Kyle Josef M. Bonachita</title>
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <script src="../theme.js"></script>
   <link rel="stylesheet" href="../styles.css">
@@ -24,9 +24,9 @@
   <main id="main">
     <section class="page-hero"><div class="container">
       <a class="breadcrumb" href="../index.html#data-operations">← Back to data projects</a>
-      <p class="eyebrow">RESEARCH PROJECT / DATA ANALYSIS</p>
-      <h1>OC-SVM Anomaly Detection</h1>
-      <p class="page-lead">A credit card transaction research project using data preparation, scaling, and parameter search to identify unusual records.</p>
+      <p class="eyebrow">EARLIER TECHNICAL STUDY / ML ANALYSIS</p>
+      <h1>Transaction review (ML study)</h1>
+      <p class="page-lead">An earlier credit card transaction study using data preparation and One-Class SVM to prioritize unusual records for human review.</p>
       <dl class="case-facts"><div><dt>ROLE</dt><dd>Machine learning research</dd></div><div><dt>FORMAT</dt><dd>Model evaluation</dd></div><div><dt>TOOLS</dt><dd>Python, scikit-learn, One-Class SVM, Grid Search</dd></div><div><dt>STATUS</dt><dd>Earlier research project; no customer records shown</dd></div></dl>
     </div></section>
     <section class="case-section"><div class="container">
@@ -34,7 +34,7 @@
       <div class="case-detail"><h2>The problem</h2><div><p>Rare or unusual transactions are difficult to review one by one. A model can help prioritize cases, but a sensitive anomaly detector may change substantially when features or model parameters change.</p></div></div>
       <div class="case-detail"><h2>What I worked on</h2><div><ul><li>Prepared transaction features for model input and selected the features used for analysis.</li><li>Scaled the features before fitting a One-Class SVM.</li><li>Used Grid Search to compare parameter settings and presented the evaluation with statistical summaries and visualizations.</li></ul></div></div>
       <div class="case-detail"><h2>Review procedure</h2><div><ol><li>Record the dataset version, permitted fields, and quality checks before modeling.</li><li>Keep evaluation data separate while fitting preprocessing and candidate models.</li><li>Compare parameter settings on the evaluation data and inspect both missed anomalies and false alerts.</li><li>Document the chosen settings and rerun the same checks when the data changes.</li></ol><p>This is a practical repeat-run checklist; the original portfolio does not document every evaluation detail needed to audit the earlier model result.</p></div></div>
-      <div class="case-detail"><h2>How it helps data operations</h2><div><p>The project demonstrates preparation, tuning, and review of data signals rather than manually scanning every row. A flagged transaction is a lead for investigation, not a final fraud decision.</p></div></div>
+      <div class="case-detail"><h2>Relevant data skill</h2><div><p>The study demonstrates careful preparation of source data and a review-first approach to unusual records. A flagged transaction is a lead for investigation, not a final fraud decision.</p></div></div>
       <div class="case-status"><strong>Evidence and limits:</strong> The project is described in my earlier portfolio. The dataset split, class balance, confusion matrix, and operating threshold are not documented here, so this page does not present a performance percentage as a validated result.</div>
     </div></section>
     <div class="container next-project"><span>NEXT PROJECT</span><a href="./rfid-attendance.html">RFID Attendance System ↗</a></div>

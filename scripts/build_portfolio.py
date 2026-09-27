@@ -82,9 +82,10 @@ def render_card(project: dict) -> str:
     detail = "./" + project["detail"]
     demo = "./" + project["demo"]["href"]
     visual_class = {"automation": "visual--automation", "web-development": "visual--web", "data-operations": "visual--data"}[project["category"]]
+    card_class = "chapter-project chapter-project--secondary" if project.get("secondary") else "chapter-project"
     stack = " · ".join(project["stack"])
     return (
-        f'          <article class="chapter-project" data-project-id="{esc(project["id"])}" data-reveal>\n'
+        f'          <article class="{card_class}" data-project-id="{esc(project["id"])}" data-reveal>\n'
         f'            <a class="chapter-project-visual {visual_class}" href="{esc(detail)}" data-open-project="{esc(project["id"])}" aria-label="Preview {esc(project["title"])}">'
         f'<img src="./{esc(image["src"])}" alt="{esc(image["alt"])}" width="1200" height="720" loading="lazy"><span class="project-visual-cta" aria-hidden="true">View gallery ↗</span></a>\n'
         f'            <div class="chapter-project-content"><div class="chapter-project-meta"><span>{esc(project["meta"][0])}</span><span>{esc(project["meta"][1])}</span></div>'

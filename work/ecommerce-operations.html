@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111a16">
-  <meta name="description" content="E-commerce order QA portfolio case by Kyle Josef M. Bonachita: status-aware CSV checks and SKU catalog coverage using aggregate results only.">
-  <title>E-commerce Order QA | Kyle Josef M. Bonachita</title>
+  <meta name="description" content="Sales and inventory record review by Kyle Josef M. Bonachita: filter incomplete sales lines, inspect duplicate candidates, and compare product codes using aggregate results.">
+  <title>Sales &amp; Inventory Record Review | Kyle Josef M. Bonachita</title>
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <script src="../theme.js"></script>
   <link rel="stylesheet" href="../styles.css">
@@ -51,8 +51,8 @@
     <section class="page-hero"><div class="container">
       <a class="breadcrumb" href="../index.html#data-operations">← Back to data operations</a>
       <p class="eyebrow">PORTFOLIO ANALYSIS / DATA OPERATIONS</p>
-      <h1>E-commerce order QA</h1>
-      <p class="page-lead">A reproducible local audit of order lines and a separate SKU inventory export. It checks missing values in context and publishes aggregate results without exposing source records.</p>
+      <h1>Sales &amp; inventory record review</h1>
+      <p class="page-lead">A practical sales-file task: filter incomplete lines, check which repeats may be real duplicates, and compare product codes with a separate inventory list. The published results contain counts only.</p>
       <dl class="case-facts">
         <div><dt>ORDER REPORT</dt><dd>128,975 order lines</dd></div>
         <div><dt>INVENTORY LIST</dt><dd>9,271 rows</dd></div>
@@ -67,12 +67,12 @@
         <figcaption>Measured counts from the two supplied CSVs. The graphic contains no order records, shipping details, customer names, or prices.</figcaption>
       </figure>
 
-      <div class="case-detail"><h2>Why I built this audit</h2><div>
+      <div class="case-detail"><h2>Why this matters to a client</h2><div>
         <p>The sales report is an <strong>order-line</strong> export. One Order ID can occur on several lines, so removing every repeated ID would discard valid items. The inventory file is a separate SKU list with no snapshot date, so it can show catalog coverage but cannot explain whether an order was fulfilled.</p>
-        <p>I built the audit to define the data grain first, then separate likely review candidates from fields that may be expected on canceled lines. This makes the result more useful than a blanket duplicate or missing-value count.</p>
+        <p>A data assistant may be asked to remove duplicates or fix missing fields. The safe first step is to identify what each row means, isolate the rows that actually need attention, and leave valid sales items intact. This exercise produces that review list and the counts a client can use to assign follow-up.</p>
       </div></div>
 
-      <div class="case-detail"><h2>What I built</h2><div>
+      <div class="case-detail"><h2>What the workflow checks</h2><div>
         <ul>
           <li>A standard-library Python script that streams both CSVs and checks required columns before analysis.</li>
           <li>Status-aware counts for blank <code>Amount</code> and zero <code>Qty</code>, plus a count of rows missing a shipping field.</li>
@@ -82,27 +82,27 @@
         </ul>
       </div></div>
 
-      <div class="case-detail" id="workflow"><h2>Operating procedure</h2><div><ol class="case-sop"><li><strong>Confirm the source and grain</strong><p>Check required columns and treat each sales row as an order line. Do not delete a line merely because its Order ID repeats.</p></li><li><strong>Segment exceptions</strong><p>Count blank amounts and zero quantities by canceled versus other statuses, then inspect the non-canceled candidates in the private source.</p></li><li><strong>Compare identifiers carefully</strong><p>Check repeated Order ID and SKU combinations separately from otherwise identical rows. Match trimmed SKU codes against the undated inventory list.</p></li><li><strong>Publish a safe summary</strong><p>Review candidate rows locally and export only aggregate JSON. Keep order IDs, addresses, prices, and source CSVs private.</p></li></ol></div></div>
+      <div class="case-detail" id="workflow"><h2>Operating procedure</h2><div><ol class="case-sop"><li><strong>Confirm what each row means</strong><p>Check required columns and treat each sales row as an order line. A repeated Order ID can represent another valid item in the same order.</p></li><li><strong>Filter incomplete records</strong><p>Count blank amounts and zero quantities by canceled versus other statuses, then inspect the non-canceled candidates in the private source.</p></li><li><strong>Review before deleting</strong><p>Check repeated Order ID and SKU pairs separately from otherwise identical rows. Remove a row only after its duplication is confirmed and the client approves the correction.</p></li><li><strong>Match and hand off</strong><p>Compare trimmed SKU codes with the undated inventory list and export aggregate JSON. Keep order IDs, addresses, prices, and source CSVs private.</p></li></ol></div></div>
 
-      <div class="case-detail" id="results"><h2>What the checks found</h2><div>
+      <div class="case-detail" id="results"><h2>Records for follow-up</h2><div>
         <div class="qa-breakdown">
           <div><strong>7,795</strong><span>lines have no amount; 7,566 are canceled, leaving 229 other lines for review.</span></div>
           <div><strong>12,807</strong><span>lines have zero quantity; 12,701 are canceled, leaving 106 other lines for review.</span></div>
           <div><strong>6,617 / 7,195</strong><span>distinct sales SKUs appear in the inventory list; 578 do not match its SKU codes.</span></div>
           <div><strong>33</strong><span>lines lack at least one shipping-location field; the values themselves stay private.</span></div>
         </div>
-        <p style="margin-top: 22px;">Another 8,597 lines share an Order ID with an earlier line. That is a grain check, not a duplicate count. Six rows are otherwise identical after excluding the generated index; those warrant review before any removal.</p>
+        <p style="margin-top: 22px;">Another 8,597 lines share an Order ID with an earlier line. That does not mean they are duplicates: an order can contain several items. Six rows are otherwise identical after excluding the generated index; those warrant review before any removal.</p>
         <p>These are measured dataset findings, not a measured improvement in processing speed or error rate. The 229 amount candidates and 106 quantity candidates may overlap; they should not be added as a count of distinct orders.</p>
       </div></div>
 
-      <div class="case-detail"><h2>How to inspect it</h2><div>
-        <p>The analysis runs locally against the two source CSVs and writes the aggregate summary shown here. The script and the resulting count file are available for review. Source CSVs are kept out of the portfolio.</p>
+      <div class="case-detail"><h2>What I can hand off</h2><div>
+        <p>The analysis runs locally against the two source CSVs and writes the aggregate summary shown here. The script and count file are available for review. On a client task, candidate rows would be checked and approved against the private source before any cleanup export. Source CSVs are kept out of this portfolio.</p>
         <div class="qa-artifacts"><a href="../scripts/ecommerce_qa.py">Read the Python script ↗</a><a href="../data/ecommerce-qa-summary.json">View aggregate counts ↗</a></div>
       </div></div>
 
       <div class="case-status"><strong>Scope:</strong> This is a portfolio analysis of supplied sample files. It is not a live order system or a measured business outcome. The inventory file has no snapshot date, so SKU matches describe list coverage only. Missing values on canceled lines are not automatically errors.</div>
     </div></section>
-    <div class="container next-project"><span>MORE DATA WORK</span><a href="../lab/data-cleanup.html">Try the Data Quality Lab ↗</a></div>
+    <div class="container next-project"><span>MORE DATA WORK</span><a href="../lab/data-cleanup.html">Try the inventory CSV cleanup demo ↗</a></div>
   </main>
 
   <footer class="site-footer"><div class="container footer-inner"><span>© <span data-year>2026</span> <span data-owner-name>Kyle Josef M. Bonachita</span></span><span>Automation · Web development · Data operations</span><a href="#top">Back to top ↑</a></div></footer>

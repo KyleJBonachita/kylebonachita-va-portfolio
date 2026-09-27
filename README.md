@@ -10,9 +10,9 @@ Scroll through all three specialties or use the project chooser to focus on one.
 
 - **Automation:** Appscripter, Morning Tech Team reminder, Session Segregator, and NVIDIA Session Hub.
 - **Web development and technical tools:** Device Custody Tracker, Tech Support Ticketing System, Foot Pedal Configurator, and RFID Attendance Management.
-- **Data operations:** Hotel Booking QA, E-commerce Order QA, Data Quality Lab, OC-SVM Anomaly Detection, and Device Inventory Records.
+- **Data operations:** Inventory CSV Cleanup Demo, Equipment Inventory & Handoffs, Hotel Booking Record Review, Sales & Inventory Record Review, and an earlier transaction-analysis study.
 
-The internal-tool previews and guided walkthroughs use illustrative or invented content. The hotel and e-commerce pages publish aggregate results from locally analyzed datasets and include reproducible Python scripts. No raw booking, order, customer, address, inventory-price, or internal work records are included in the site. The Hotel Booking QA script can optionally create a **private local** review CSV; keep that output out of the repository. The ticketing case study includes one clearly labeled hypothetical impact calculation; it is not a measured project result.
+The internal-tool previews and guided walkthroughs use illustrative or invented content. The inventory cleanup demo uses fictional rows and lets visitors filter, exclude or restore rows, then export ready records and a complete review trail. The hotel and e-commerce pages publish aggregate results from locally analyzed datasets and include reproducible Python scripts. No raw booking, order, customer, address, inventory-price, or internal work records are included in the site. The hotel review script can optionally create a **private local** review CSV; keep that output out of the repository. The ticketing case study includes one clearly labeled hypothetical impact calculation; it is not a measured project result.
 
 ## Run locally
 

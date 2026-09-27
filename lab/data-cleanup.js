@@ -15,17 +15,22 @@
   const sampleButton = document.getElementById("load-sample");
   const clearButton = document.getElementById("clear-input");
   const downloadButton = document.getElementById("download-csv");
+  const readyDownloadButton = document.getElementById("download-ready");
+  const filterButtons = [...document.querySelectorAll("[data-lab-filter]")];
+  const filterStatus = document.getElementById("lab-filter-status");
   const body = document.getElementById("result-body");
   const issueList = document.getElementById("issue-list");
   const message = document.getElementById("lab-message");
   const stats = {
     rows: document.getElementById("stat-rows"),
     ready: document.getElementById("stat-ready"),
-    review: document.getElementById("stat-review")
+    review: document.getElementById("stat-review"),
+    excluded: document.getElementById("stat-excluded")
   };
   if (!input || !runButton || !body) return;
 
   let lastResults = [];
+  let currentFilter = "all";
   input.value = sample;
 
   function parseCsv(text) {
@@ -76,7 +81,7 @@
       if (!rawQuantity || !/^\d+$/.test(rawQuantity)) issues.push("Quantity must be a whole number of zero or more");
       if (!location) issues.push("Missing location");
       if (cells.length !== headers.length) issues.push("Column count differs from header");
-      return { line: index + 2, sku, item, quantity, location, issues };
+      return { line: index + 2, sku, item, quantity, location, issues, excluded: false };
     });
     const counts = new Map();
     records.forEach((record) => { if (record.sku) counts.set(record.sku, (counts.get(record.sku) || 0) + 1); });
@@ -91,22 +96,28 @@
 
   function resetResults() {
     lastResults = [];
+    currentFilter = "all";
+    filterButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.labFilter === "all")));
     stats.rows.textContent = "0";
     stats.ready.textContent = "0";
     stats.review.textContent = "0";
+    stats.excluded.textContent = "0";
+    filterStatus.textContent = "Run cleanup to filter records.";
     body.replaceChildren();
     const emptyRow = document.createElement("tr");
     const cell = document.createElement("td");
-    cell.colSpan = 5;
+    cell.colSpan = 6;
     cell.textContent = "No results yet.";
     emptyRow.appendChild(cell);
     body.appendChild(emptyRow);
     issueList.replaceChildren();
     downloadButton.disabled = true;
+    readyDownloadButton.disabled = true;
   }
 
-  function addCell(row, value) {
+  function addCell(row, value, label) {
     const cell = document.createElement("td");
+    cell.dataset.label = label;
     cell.textContent = value || "—";
     row.appendChild(cell);
     return cell;
@@ -114,35 +125,70 @@
 
   function render(records) {
     lastResults = records;
-    const reviewCount = records.filter((record) => record.issues.length > 0).length;
+    const readyCount = records.filter((record) => !record.excluded && !record.issues.length).length;
+    const reviewCount = records.filter((record) => !record.excluded && record.issues.length).length;
+    const excludedCount = records.filter((record) => record.excluded).length;
     stats.rows.textContent = String(records.length);
-    stats.ready.textContent = String(records.length - reviewCount);
+    stats.ready.textContent = String(readyCount);
     stats.review.textContent = String(reviewCount);
+    stats.excluded.textContent = String(excludedCount);
     body.replaceChildren();
     issueList.replaceChildren();
+    filterButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.labFilter === currentFilter)));
 
-    records.forEach((record) => {
+    const visible = records.filter((record) => {
+      if (currentFilter === "ready") return !record.excluded && !record.issues.length;
+      if (currentFilter === "review") return !record.excluded && record.issues.length > 0;
+      if (currentFilter === "excluded") return record.excluded;
+      return true;
+    });
+    filterStatus.textContent = `Showing ${visible.length} of ${records.length} records.`;
+    if (!visible.length) {
       const row = document.createElement("tr");
-      if (record.issues.length) row.className = "row-issue";
-      addCell(row, record.sku);
-      addCell(row, record.item);
-      addCell(row, record.quantity);
-      addCell(row, record.location);
+      const cell = document.createElement("td");
+      cell.colSpan = 6;
+      cell.textContent = "No records in this view.";
+      row.append(cell);
+      body.append(row);
+    }
+    visible.forEach((record) => {
+      const row = document.createElement("tr");
+      if (record.excluded) row.className = "row-excluded";
+      else if (record.issues.length) row.className = "row-issue";
+      addCell(row, record.sku, "SKU");
+      addCell(row, record.item, "Item");
+      addCell(row, record.quantity, "Qty");
+      addCell(row, record.location, "Location");
       const statusCell = document.createElement("td");
+      statusCell.dataset.label = "Status";
       const status = document.createElement("span");
-      status.className = "status-pill" + (record.issues.length ? " needs-review" : "");
-      status.textContent = record.issues.length ? "REVIEW" : "READY";
+      status.className = "status-pill" + (record.excluded ? " is-excluded" : record.issues.length ? " needs-review" : "");
+      status.textContent = record.excluded ? "EXCLUDED" : record.issues.length ? "REVIEW" : "READY";
       statusCell.appendChild(status);
       row.appendChild(statusCell);
+      const actionCell = document.createElement("td");
+      actionCell.dataset.label = "Action";
+      const action = document.createElement("button");
+      action.type = "button";
+      action.className = "lab-row-action";
+      action.dataset.line = String(record.line);
+      action.textContent = record.excluded ? "Restore" : "Exclude";
+      action.setAttribute("aria-label", `${record.excluded ? "Restore" : "Exclude from clean export"} source line ${record.line}`);
+      actionCell.append(action);
+      row.append(actionCell);
       body.appendChild(row);
-      if (record.issues.length) {
-        const item = document.createElement("li");
-        item.textContent = "Line " + record.line + ": " + record.issues.join("; ");
-        issueList.appendChild(item);
-      }
+    });
+    records.forEach((record) => {
+      if (!record.issues.length && !record.excluded) return;
+      const item = document.createElement("li");
+      const flags = [...record.issues];
+      if (record.excluded) flags.push("Excluded from clean export");
+      item.textContent = "Line " + record.line + ": " + flags.join("; ");
+      issueList.appendChild(item);
     });
     downloadButton.disabled = false;
-    setMessage(records.length + " record" + (records.length === 1 ? "" : "s") + " processed. " + reviewCount + " need" + (reviewCount === 1 ? "s" : "") + " review.");
+    readyDownloadButton.disabled = readyCount === 0;
+    setMessage(`${records.length} records processed: ${readyCount} ready, ${reviewCount} need review, ${excludedCount} excluded.`);
   }
 
   function csvCell(value) {
@@ -172,22 +218,49 @@
     resetResults();
     setMessage("Input cleared. Paste a CSV to begin.");
   });
-  downloadButton.addEventListener("click", () => {
-    if (!lastResults.length) return;
-    const header = ["sku", "item", "quantity", "location", "status", "issues"];
-    const rows = lastResults.map((record) => [
-      record.sku, record.item, record.quantity, record.location,
-      record.issues.length ? "REVIEW" : "READY", record.issues.join("; ")
-    ]);
+  filterButtons.forEach((button) => button.addEventListener("click", () => {
+    currentFilter = button.dataset.labFilter;
+    if (lastResults.length) render(lastResults);
+    else filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+  }));
+  body.addEventListener("click", (event) => {
+    const action = event.target.closest("button[data-line]");
+    if (!action) return;
+    const record = lastResults.find((item) => item.line === Number(action.dataset.line));
+    if (!record) return;
+    record.excluded = !record.excluded;
+    render(lastResults);
+    const replacement = [...body.querySelectorAll("button[data-line]")].find((item) => Number(item.dataset.line) === record.line);
+    (replacement || filterButtons.find((button) => button.dataset.labFilter === currentFilter))?.focus();
+  });
+
+  function downloadCsv(filename, header, rows) {
     const csv = [header, ...rows].map((row) => row.map(csvCell).join(",")).join("\r\n");
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "inventory-review.csv";
+    link.download = filename;
     document.body.appendChild(link);
     link.click();
     link.remove();
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+  readyDownloadButton.addEventListener("click", () => {
+    const ready = lastResults.filter((record) => !record.excluded && !record.issues.length);
+    if (!ready.length) return;
+    downloadCsv("inventory-ready.csv", ["sku", "item", "quantity", "location"],
+      ready.map((record) => [record.sku, record.item, record.quantity, record.location]));
+  });
+  downloadButton.addEventListener("click", () => {
+    if (!lastResults.length) return;
+    const header = ["source_line", "sku", "item", "quantity", "location", "status", "issues"];
+    const rows = lastResults.map((record) => [
+      record.line,
+      record.sku, record.item, record.quantity, record.location,
+      record.excluded ? "EXCLUDED" : record.issues.length ? "REVIEW" : "READY",
+      [...record.issues, ...(record.excluded ? ["Manually excluded from clean export"] : [])].join("; ")
+    ]);
+    downloadCsv("inventory-review.csv", header, rows);
   });
 })();

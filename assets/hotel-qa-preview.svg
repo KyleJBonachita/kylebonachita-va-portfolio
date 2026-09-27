@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
-  <title id="title">Hotel Booking QA portfolio preview</title>
-  <desc id="desc">An abstract booking quality dashboard showing 36,275 checked rows, 115 review rows, and two rule counts. No booking records are shown.</desc>
+  <title id="title">Hotel booking record review preview</title>
+  <desc id="desc">An illustrative booking review summary showing 36,275 checked rows, 115 follow-up rows, and two rule counts. No booking records are shown.</desc>
   <defs>
     <linearGradient id="surface" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#122b27"/><stop offset="1" stop-color="#0a1e1c"/></linearGradient>
     <linearGradient id="wash" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#75d5ae" stop-opacity=".18"/><stop offset="1" stop-color="#75d5ae" stop-opacity="0"/></linearGradient>
@@ -11,9 +11,9 @@
   <path d="M68 0V720M1132 0V720" stroke="#294940" stroke-width="1"/>
   <text x="110" y="125" fill="#75d5ae" font-family="Arial,sans-serif" font-size="21" font-weight="700" letter-spacing="5">DATA OPERATIONS / FIELD NOTE 02</text>
   <text x="110" y="244" fill="#f1f6ee" font-family="Arial,sans-serif" font-size="77" font-weight="700" letter-spacing="-4">Hotel booking</text>
-  <text x="110" y="325" fill="#f1f6ee" font-family="Arial,sans-serif" font-size="77" font-weight="700" letter-spacing="-4">quality check.</text>
+  <text x="110" y="325" fill="#f1f6ee" font-family="Arial,sans-serif" font-size="77" font-weight="700" letter-spacing="-4">record review.</text>
   <path d="M110 387H570" stroke="#75d5ae" stroke-width="3"/>
-  <text x="110" y="445" fill="#aac3b7" font-family="Arial,sans-serif" font-size="26">Calendar dates · stay length · exception queue</text>
+  <text x="110" y="445" fill="#aac3b7" font-family="Arial,sans-serif" font-size="26">Arrival dates · stay length · follow-up list</text>
   <text x="110" y="563" fill="#75d5ae" font-family="Arial,sans-serif" font-size="63" font-weight="700" letter-spacing="-2">36,275</text>
   <text x="353" y="562" fill="#aac3b7" font-family="Arial,sans-serif" font-size="23">rows checked</text>
   <text x="110" y="611" fill="#aac3b7" font-family="Arial,sans-serif" font-size="19">Aggregate results only. No booking records published.</text>
