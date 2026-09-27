@@ -1,0 +1,18 @@
+{
+  "dataset": "Hotel reservations CSV",
+  "scope": "Arrival date validity and stay length checks only; other fields were not audited.",
+  "rows": 36275,
+  "passes_checked_rules": 36160,
+  "review": 115,
+  "checks": {
+    "invalid_arrival_date": 37,
+    "zero_night_stay": 78,
+    "invalid_night_values": 0
+  },
+  "review_breakdown": {
+    "date_only": 37,
+    "zero_nights_only": 78,
+    "invalid_nights_only": 0,
+    "multiple_issues": 0
+  }
+}

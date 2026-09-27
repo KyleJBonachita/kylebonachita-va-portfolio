@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a16">
+  <meta name="description" content="E-commerce order QA portfolio case by Kyle Josef M. Bonachita: status-aware CSV checks and SKU catalog coverage using aggregate results only.">
+  <title>E-commerce Order QA | Kyle Josef M. Bonachita</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="../theme.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../theme.css">
+  <style>
+    .case-ecommerce .page-hero { padding-block: clamp(42px, 5.5vw, 76px) clamp(42px, 5vw, 65px); }
+    .case-ecommerce .breadcrumb { margin-bottom: clamp(30px, 4vw, 48px); }
+    .case-ecommerce .case-facts dt,
+    .case-ecommerce .case-detail p,
+    .case-ecommerce .case-detail li,
+    .case-ecommerce .case-media figcaption { color: var(--muted); }
+    .case-ecommerce .case-facts dd,
+    .case-ecommerce .case-status strong { color: var(--ink); }
+    .case-ecommerce .case-media { background: var(--white); border-color: var(--line); }
+    .case-ecommerce .case-media img { width: 100%; height: auto; max-height: none; }
+    .case-ecommerce .case-media figcaption { border-color: var(--line); }
+    .case-ecommerce .case-status { background: var(--soft); color: var(--muted); }
+    .qa-breakdown { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 4px; }
+    .qa-breakdown div { border-top: 1px solid var(--line); padding-top: 15px; }
+    .qa-breakdown strong { display: block; margin-bottom: 3px; color: var(--ink); font-size: clamp(22px, 2.4vw, 29px); font-weight: 650; line-height: 1.2; letter-spacing: -.035em; }
+    .qa-breakdown span { display: block; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .qa-artifacts { display: flex; flex-wrap: wrap; gap: 12px 25px; margin-top: 24px; }
+    .qa-artifacts a { border-bottom: 1px solid var(--accent); padding-bottom: 3px; color: var(--accent); font-size: 13px; font-weight: 700; }
+    .qa-artifacts a:hover { color: var(--ink); }
+    @media (max-width: 620px) {
+      .qa-breakdown { grid-template-columns: 1fr; gap: 17px; }
+      .case-ecommerce .case-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+  <script defer src="../site-config.js"></script>
+  <script defer src="../site.js"></script>
+</head>
+<body class="case-ecommerce" data-page="case">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top"><div class="container nav-shell">
+    <a class="brand" href="../index.html" aria-label="Portfolio home"><strong data-owner-name>Kyle Josef M. Bonachita</strong><span>Technical VA</span></a>
+    <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="site-nav" id="primary-nav" aria-label="Main navigation"><a href="../index.html#work">Work</a><a href="../index.html#data-operations">Data operations</a><a href="../index.html#about">About</a><a class="nav-contact" href="../index.html#contact">Contact <span aria-hidden="true">↗</span></a></nav>
+  </div></header>
+
+  <main id="main">
+    <section class="page-hero"><div class="container">
+      <a class="breadcrumb" href="../index.html#data-operations">← Back to data operations</a>
+      <p class="eyebrow">PORTFOLIO ANALYSIS / DATA OPERATIONS</p>
+      <h1>E-commerce order QA</h1>
+      <p class="page-lead">A reproducible local audit of order lines and a separate SKU inventory export. It checks missing values in context and publishes aggregate results without exposing source records.</p>
+      <dl class="case-facts">
+        <div><dt>ORDER REPORT</dt><dd>128,975 order lines</dd></div>
+        <div><dt>INVENTORY LIST</dt><dd>9,271 rows</dd></div>
+        <div><dt>METHOD</dt><dd>Python CSV checks</dd></div>
+        <div><dt>OUTPUT</dt><dd>Aggregate JSON only</dd></div>
+      </dl>
+    </div></section>
+
+    <section class="case-section"><div class="container">
+      <figure class="case-media">
+        <picture><source media="(max-width: 650px)" srcset="../assets/ecommerce-qa-mobile.svg"><img src="../assets/ecommerce-qa-preview.svg" width="1200" height="680" alt="Aggregate summary: 128,975 order lines; missing amounts and zero quantities separated by canceled versus other statuses; 6,617 of 7,195 sales SKUs present in a separate inventory list"></picture>
+        <figcaption>Measured counts from the two supplied CSVs. The graphic contains no order records, shipping details, customer names, or prices.</figcaption>
+      </figure>
+
+      <div class="case-detail"><h2>The processing problem</h2><div>
+        <p>The sales report is an <strong>order-line</strong> export. One Order ID can occur on several lines, so removing every repeated ID would discard valid items. The inventory file is a separate SKU list with no snapshot date, so it can show catalog coverage but cannot explain whether an order was fulfilled.</p>
+        <p>Missing amounts and zero quantities also need status context. In this sample, most occur on canceled lines. The useful review queue is the smaller set that remains after status is considered.</p>
+      </div></div>
+
+      <div class="case-detail"><h2>What I built</h2><div>
+        <ul>
+          <li>A standard-library Python script that streams both CSVs and checks required columns before analysis.</li>
+          <li>Status-aware counts for blank <code>Amount</code> and zero <code>Qty</code>, plus a count of rows missing a shipping field.</li>
+          <li>Separate checks for repeated Order IDs, repeated Order ID and SKU pairs, and rows identical after excluding the export index.</li>
+          <li>An exact, whitespace-trimmed SKU comparison between sales lines and the inventory list.</li>
+          <li>A JSON output with counts only. Identifiers, locations, customer details, and prices are never exported.</li>
+        </ul>
+      </div></div>
+
+      <div class="case-detail"><h2>What the checks found</h2><div>
+        <div class="qa-breakdown">
+          <div><strong>7,795</strong><span>lines have no amount; 7,566 are canceled, leaving 229 other lines for review.</span></div>
+          <div><strong>12,807</strong><span>lines have zero quantity; 12,701 are canceled, leaving 106 other lines for review.</span></div>
+          <div><strong>6,617 / 7,195</strong><span>distinct sales SKUs appear in the inventory list; 578 do not match its SKU codes.</span></div>
+          <div><strong>33</strong><span>lines lack at least one shipping-location field; the values themselves stay private.</span></div>
+        </div>
+        <p style="margin-top: 22px;">Another 8,597 lines share an Order ID with an earlier line. That is a grain check, not a duplicate count. Six rows are otherwise identical after excluding the generated index; those warrant review before any removal.</p>
+      </div></div>
+
+      <div class="case-detail"><h2>How to inspect it</h2><div>
+        <p>The analysis runs locally against the two source CSVs and writes the aggregate summary shown here. The script and the resulting count file are available for review. Source CSVs are kept out of the portfolio.</p>
+        <div class="qa-artifacts"><a href="../scripts/ecommerce_qa.py">Read the Python script ↗</a><a href="../data/ecommerce-qa-summary.json">View aggregate counts ↗</a></div>
+      </div></div>
+
+      <div class="case-status"><strong>Scope:</strong> This is a portfolio analysis of supplied sample files. It is not a live order system or a measured business outcome. The inventory file has no snapshot date, so SKU matches describe list coverage only. Missing values on canceled lines are not automatically errors.</div>
+    </div></section>
+    <div class="container next-project"><span>MORE DATA WORK</span><a href="../lab/data-cleanup.html">Try the Data Quality Lab ↗</a></div>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-year>2026</span> <span data-owner-name>Kyle Josef M. Bonachita</span></span><span>Automation · Web development · Data operations</span><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>

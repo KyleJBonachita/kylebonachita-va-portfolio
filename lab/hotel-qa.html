@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b26">
+  <meta name="description" content="A reproducible hotel booking quality check by Kyle Josef M. Bonachita: 36,275 reservations reconciled across date and stay-length rules, with a synthetic review queue demo.">
+  <title>Hotel Booking QA | Kyle Josef M. Bonachita</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="../theme.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="./hotel-qa.css">
+  <script defer src="../site-config.js"></script>
+  <script defer src="../site.js"></script>
+  <script defer src="./hotel-qa.js"></script>
+</head>
+<body class="hq-page" data-page="hotel-qa">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top"><div class="container nav-shell">
+    <a class="brand" href="../index.html" aria-label="Portfolio home"><strong data-owner-name>Kyle Josef M. Bonachita</strong><span>Technical VA</span></a>
+    <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="site-nav" id="primary-nav" aria-label="Main navigation"><a href="../index.html#work">Work</a><a href="../index.html#about">About</a><a class="nav-contact" href="../index.html#contact">Contact <span aria-hidden="true">↗</span></a></nav>
+  </div></header>
+  <main id="main">
+    <section class="page-hero hq-hero"><div class="container">
+      <a class="breadcrumb" href="../index.html#data-operations">← Back to data operations</a>
+      <p class="eyebrow">DATA OPERATIONS / PORTFOLIO EXERCISE</p>
+      <h1>Hotel Booking QA</h1>
+      <p class="page-lead">A reproducible check of arrival dates and stay lengths in a 36,275-row reservations CSV. The result is a small, traceable review queue and a count that reconciles to the source.</p>
+      <dl class="case-facts"><div><dt>SOURCE</dt><dd>User-provided hotel reservations dataset</dd></div><div><dt>MY WORK</dt><dd>Rules, Python CLI, review flow, interface</dd></div><div><dt>TOOLS</dt><dd>Python, CSV, JSON, JavaScript</dd></div><div><dt>OUTPUT</dt><dd>Aggregate counts and synthetic demo</dd></div></dl>
+    </div></section>
+
+    <section class="hq-section" aria-labelledby="hq-overview-title"><div class="container">
+      <div class="hq-section-heading"><div><p class="eyebrow">01 / RESULT</p><h2 id="hq-overview-title">Every row has an outcome.</h2></div><p>These findings cover two checks only: calendar-valid arrival dates and stays with at least one night. They are not a full audit of reservation accuracy.</p></div>
+      <div class="hq-kpis" aria-label="Booking quality summary">
+        <div class="hq-kpi"><span>Source rows</span><strong data-metric="rows">36,275</strong><small>CSV records examined</small></div>
+        <div class="hq-kpi hq-kpi-review"><span>Needs review</span><strong data-metric="review">115</strong><small>Either check flagged a row</small></div>
+        <div class="hq-kpi"><span>Passed these checks</span><strong data-metric="passes_checked_rules">36,160</strong><small>No issue found by these rules</small></div>
+      </div>
+      <div class="hq-reconcile"><div><span class="hq-reconcile-label">RECONCILIATION</span><p><strong data-metric="passes_checked_rules">36,160</strong> passed + <strong data-metric="review">115</strong> review = <strong data-metric="rows">36,275</strong> source rows</p></div><span class="hq-reconcile-check" aria-label="Counts reconcile">✓</span></div>
+    </div></section>
+
+    <section class="hq-section hq-section-tinted" aria-labelledby="hq-process-title"><div class="container">
+      <div class="hq-section-heading"><div><p class="eyebrow">02 / PROCESS</p><h2 id="hq-process-title">Source to review queue.</h2></div><p>The script reads the CSV one row at a time. It writes aggregate counts by default and can create a private local queue of flagged rows for human follow-up.</p></div>
+      <ol class="hq-flow"><li><span>01</span><strong>Read source</strong><p>Check required columns and stream each booking row.</p></li><li><span>02</span><strong>Apply rules</strong><p>Validate the calendar date and total nights.</p></li><li><span>03</span><strong>Queue exceptions</strong><p>Count each reason and any overlap.</p></li><li><span>04</span><strong>Reconcile</strong><p>Confirm passed plus review equals all rows.</p></li></ol>
+      <div class="hq-rules"><article><span class="hq-rule-index">RULE 01</span><h3>Invalid arrival date</h3><p>Build a real calendar date from year, month, and day. A date such as February 29, 2018 fails because 2018 was not a leap year.</p><div class="hq-rule-count"><strong data-metric="invalid_arrival_date">37</strong><span>rows flagged</span></div></article><article><span class="hq-rule-index">RULE 02</span><h3>Zero-night stay</h3><p>Add weekend and weekday nights. A reservation with zero of both enters review because it has no booked stay length.</p><div class="hq-rule-count"><strong data-metric="zero_night_stay">78</strong><span>rows flagged</span></div></article></div>
+      <p class="hq-method-note">No rows triggered both findings in this dataset. The script also guards against missing, non-numeric, or negative night counts; none appeared in this source.</p>
+    </div></section>
+
+    <section class="hq-section" aria-labelledby="hq-demo-title"><div class="container">
+      <div class="hq-section-heading"><div><p class="eyebrow">03 / INTERACTIVE DEMO</p><h2 id="hq-demo-title">Try the review queue.</h2></div><p>These are invented examples, not reservations from the source file. Choose a view to see which rows a data processor would investigate.</p></div>
+      <div class="hq-demo">
+        <div class="hq-demo-top"><div><strong>SYNTHETIC EXAMPLES</strong><span>3 sample rows · no customer data</span></div><div class="hq-filter" role="group" aria-label="Filter synthetic example rows"><button type="button" data-hq-filter="all" aria-pressed="true">All rows <span>3</span></button><button type="button" data-hq-filter="review" aria-pressed="false">Needs review <span>2</span></button><button type="button" data-hq-filter="pass" aria-pressed="false">Passed <span>1</span></button></div></div>
+        <div class="hq-table-wrap"><table class="hq-table"><thead><tr><th scope="col">Example</th><th scope="col">Arrival</th><th scope="col">Weekday</th><th scope="col">Weekend</th><th scope="col">Outcome</th><th scope="col">Review reason</th></tr></thead><tbody>
+          <tr data-hq-status="review"><th scope="row" data-label="Example">EX-001</th><td data-label="Arrival">2018-02-29</td><td data-label="Weekday">2</td><td data-label="Weekend">1</td><td data-label="Outcome"><span class="hq-status hq-status-review">Review</span></td><td data-label="Review reason">Invalid calendar date</td></tr>
+          <tr data-hq-status="review"><th scope="row" data-label="Example">EX-002</th><td data-label="Arrival">2024-08-14</td><td data-label="Weekday">0</td><td data-label="Weekend">0</td><td data-label="Outcome"><span class="hq-status hq-status-review">Review</span></td><td data-label="Review reason">Zero-night stay</td></tr>
+          <tr data-hq-status="pass"><th scope="row" data-label="Example">EX-003</th><td data-label="Arrival">2024-09-21</td><td data-label="Weekday">3</td><td data-label="Weekend">1</td><td data-label="Outcome"><span class="hq-status hq-status-pass">Passed</span></td><td data-label="Review reason">—</td></tr>
+        </tbody></table></div>
+        <div class="hq-demo-bottom"><p id="hq-filter-status" role="status" aria-live="polite">Showing all 3 invented examples.</p><button class="button button-outline" type="button" id="hq-download">Download sample review CSV <span aria-hidden="true">↓</span></button></div>
+      </div>
+      <div class="hq-next"><div><p class="eyebrow">REPRODUCE THE CHECK</p><h3>Run the audit on a local CSV.</h3><p>The command writes aggregate JSON and an optional private review CSV with source identifiers and rule reasons. Save that review file outside this repository; this site contains neither source rows nor the private export.</p></div><div class="hq-code"><code>python scripts/hotel_qa.py input.csv summary.json --review-csv ../private-review.csv</code><a href="../scripts/hotel_qa.py" download>View Python script ↗</a></div></div>
+      <div class="case-status"><strong>Scope:</strong> This is a portfolio exercise using a dataset supplied for demonstration. The counts describe the two named checks. The table and downloadable CSV use invented rows only.</div>
+    </div></section>
+    <div class="container next-project"><span>MORE DATA WORK</span><a href="./data-cleanup.html">Open the inventory data lab ↗</a></div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-year>2026</span> <span data-owner-name>Kyle Josef M. Bonachita</span></span><span>Technical VA · Automation · Web development · Data operations</span><a href="#top">Back to top ↑</a></div></footer>
+
+  <script id="hq-summary-fallback" type="application/json">{"rows":36275,"passes_checked_rules":36160,"review":115,"checks":{"invalid_arrival_date":37,"zero_night_stay":78,"invalid_night_values":0},"review_breakdown":{"date_only":37,"zero_nights_only":78,"invalid_nights_only":0,"multiple_issues":0}}</script>
+</body>
+</html>

@@ -68,7 +68,7 @@
       const sku = value(0).trim().replace(/\s+/g, "-").toUpperCase();
       const item = value(1).trim().replace(/\s+/g, " ");
       const rawQuantity = value(2).trim();
-      const quantity = /^\d+$/.test(rawQuantity) ? String(Number(rawQuantity)) : rawQuantity;
+      const quantity = /^\d+$/.test(rawQuantity) ? rawQuantity.replace(/^0+(?=\d)/, "") : rawQuantity;
       const location = value(3).trim().replace(/\s+/g, "-").toUpperCase();
       const issues = [];
       if (!sku) issues.push("Missing SKU");

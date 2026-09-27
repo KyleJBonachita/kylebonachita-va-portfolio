@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">E-commerce order quality summary</title>
+  <desc id="desc">Aggregate counts from a sample order-line report and a separate inventory list: 128,975 order lines, 7,795 missing amounts, 12,807 zero quantities, and 6,617 of 7,195 sales SKUs found in the inventory list.</desc>
+  <rect width="1200" height="680" fill="#111a16"/>
+  <path d="M55 183H1145M55 486H1145" stroke="#405044" stroke-width="2"/>
+  <text x="55" y="66" fill="#c6e79b" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2.1">ORDER QA / AGGREGATE VIEW</text>
+  <text x="55" y="131" fill="#f3f5ed" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" letter-spacing="-1.4">Check the line. Then check the context.</text>
+
+  <text x="55" y="233" fill="#c6e79b" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" letter-spacing="1.7">SOURCE GRAIN</text>
+  <text x="55" y="327" fill="#f3f5ed" font-family="Arial, Helvetica, sans-serif" font-size="80" font-weight="700" letter-spacing="-3">128,975</text>
+  <text x="58" y="365" fill="#bdc9bb" font-family="Arial, Helvetica, sans-serif" font-size="22">order lines</text>
+  <text x="58" y="411" fill="#99a99b" font-family="Arial, Helvetica, sans-serif" font-size="17">120,378 distinct Order IDs</text>
+
+  <path d="M542 218V450" stroke="#405044" stroke-width="2"/>
+  <text x="590" y="233" fill="#c6e79b" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" letter-spacing="1.7">STATUS-AWARE CHECKS</text>
+  <text x="590" y="298" fill="#f3f5ed" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">Missing amount</text>
+  <text x="1138" y="298" fill="#f3f5ed" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="end">7,795</text>
+  <text x="590" y="329" fill="#aebdad" font-family="Arial, Helvetica, sans-serif" font-size="17">7,566 canceled  ·  229 other</text>
+  <path d="M590 351H1142" stroke="#405044" stroke-width="1"/>
+  <text x="590" y="402" fill="#f3f5ed" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">Zero quantity</text>
+  <text x="1138" y="402" fill="#f3f5ed" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" text-anchor="end">12,807</text>
+  <text x="590" y="433" fill="#aebdad" font-family="Arial, Helvetica, sans-serif" font-size="17">12,701 canceled  ·  106 other</text>
+
+  <text x="55" y="533" fill="#c6e79b" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" letter-spacing="1.7">SKU LIST COVERAGE</text>
+  <text x="55" y="598" fill="#f3f5ed" font-family="Arial, Helvetica, sans-serif" font-size="45" font-weight="700" letter-spacing="-1">6,617 / 7,195</text>
+  <text x="56" y="628" fill="#aebdad" font-family="Arial, Helvetica, sans-serif" font-size="17">sales SKUs found in inventory list</text>
+  <rect x="592" y="563" width="550" height="23" fill="#3a4b3d"/>
+  <rect x="592" y="563" width="506" height="23" fill="#c6e79b"/>
+  <text x="592" y="620" fill="#aebdad" font-family="Arial, Helvetica, sans-serif" font-size="17">A separate snapshot; no fulfillment inference.</text>
+  <text x="55" y="662" fill="#708471" font-family="Arial, Helvetica, sans-serif" font-size="13">Counts only. No orders, addresses, customer names, or price lists shown.</text>
+</svg>

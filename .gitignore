@@ -3,3 +3,6 @@ Thumbs.db
 node_modules/
 *.log
 qa/
+*.csv
+*.xlsx
+private/

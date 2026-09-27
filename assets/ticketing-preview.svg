@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Illustrative tech support ticketing dashboard</title>
+  <desc id="desc">Fictional support queue with filters, three sample requests, and a request detail panel. It contains no real production data.</desc>
+  <defs>
+    <linearGradient id="back" x1="0" y1="0" x2="1200" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A151E"/>
+      <stop offset="1" stop-color="#132635"/>
+    </linearGradient>
+    <linearGradient id="stage" x1="280" y1="110" x2="1020" y2="710" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1C3541"/>
+      <stop offset="1" stop-color="#132431"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#A6E6D2"/>
+      <stop offset="1" stop-color="#63C8C0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="19" stdDeviation="21" flood-color="#010B12" flood-opacity=".48"/></filter>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#9DD8CA" opacity=".12"/></pattern>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#back)"/>
+  <rect width="1200" height="720" fill="url(#dots)"/>
+  <circle cx="1070" cy="65" r="240" fill="#3B827D" opacity=".11"/>
+  <circle cx="180" cy="665" r="240" fill="#245C6B" opacity=".17"/>
+
+  <g filter="url(#shadow)">
+    <rect x="59" y="48" width="1082" height="624" rx="20" fill="#11222D" stroke="#38515B" stroke-width="1.5"/>
+    <path d="M79 48H1121C1132 48 1141 57 1141 68V102H59V68C59 57 68 48 79 48Z" fill="#182D38"/>
+    <line x1="59" y1="102" x2="1141" y2="102" stroke="#36505A"/>
+    <circle cx="86" cy="76" r="5" fill="#DF8F86"/><circle cx="104" cy="76" r="5" fill="#D2B780"/><circle cx="122" cy="76" r="5" fill="#8BC8B0"/>
+    <rect x="463" y="64" width="270" height="24" rx="12" fill="#203743" stroke="#37505A"/>
+    <circle cx="480" cy="75" r="5" fill="none" stroke="#86A7AA" stroke-width="1.5"/><path d="M484 79L489 84" stroke="#86A7AA" stroke-width="1.5"/>
+    <text x="500" y="80" fill="#8DA9AC" font-family="Arial, sans-serif" font-size="10" letter-spacing="1.5">SEARCH REQUESTS</text>
+    <circle cx="1103" cy="76" r="13" fill="#426D73"/><text x="1103" y="80" text-anchor="middle" fill="#DDF4E9" font-family="Arial, sans-serif" font-size="11" font-weight="700">K</text>
+  </g>
+
+  <path d="M59 102H257V672H79C68 672 59 663 59 652V102Z" fill="#122630"/>
+  <line x1="257" y1="102" x2="257" y2="672" stroke="#314A55"/>
+  <rect x="82" y="128" width="33" height="33" rx="9" fill="url(#glow)"/>
+  <path d="M92 145H105M98 138V152" stroke="#12353A" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="128" y="141" fill="#E5F6F2" font-family="Arial, sans-serif" font-size="14" font-weight="700">SUPPORT DESK</text>
+  <text x="128" y="157" fill="#8FA9A9" font-family="Arial, sans-serif" font-size="9" letter-spacing="1.5">WORKFLOW VIEW</text>
+  <text x="85" y="209" fill="#779A9F" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="2">WORKSPACE</text>
+  <rect x="75" y="226" width="167" height="38" rx="8" fill="#244E56"/>
+  <rect x="75" y="226" width="3" height="38" rx="1.5" fill="#85DEC8"/>
+  <rect x="91" y="241" width="13" height="12" rx="2" fill="none" stroke="#9EE6D2" stroke-width="1.6"/>
+  <path d="M95 237V241M100 237V241M91 247H104" stroke="#9EE6D2" stroke-width="1.6"/>
+  <text x="118" y="250" fill="#E1F8EE" font-family="Arial, sans-serif" font-size="12" font-weight="700">Ticket queue</text>
+  <circle cx="98" cy="292" r="6" fill="none" stroke="#77989A" stroke-width="1.6"/>
+  <path d="M94 292H102M98 288V296" stroke="#77989A" stroke-width="1.4"/>
+  <text x="118" y="296" fill="#91AAAA" font-family="Arial, sans-serif" font-size="12">New request</text>
+  <path d="M91 334H105M91 340H101M91 346H105" stroke="#77989A" stroke-width="1.6" stroke-linecap="round"/>
+  <text x="118" y="344" fill="#91AAAA" font-family="Arial, sans-serif" font-size="12">Activity log</text>
+  <path d="M91 383V369M97 383V375M103 383V365" stroke="#77989A" stroke-width="2" stroke-linecap="round"/>
+  <text x="118" y="381" fill="#91AAAA" font-family="Arial, sans-serif" font-size="12">Reports</text>
+  <line x1="83" y1="605" x2="232" y2="605" stroke="#314A55"/>
+  <circle cx="96" cy="631" r="8" fill="#27545C"/><path d="M93 631L96 634L101 628" fill="none" stroke="#A4E6D0" stroke-width="1.6"/>
+  <text x="113" y="635" fill="#8BA8A9" font-family="Arial, sans-serif" font-size="10">Example workspace</text>
+
+  <rect x="257" y="102" width="884" height="570" fill="url(#stage)"/>
+  <text x="294" y="151" fill="#8FC5BB" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="2">SERVICE OPERATIONS / REQUESTS</text>
+  <text x="294" y="191" fill="#EBF7F3" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="-.8">Support queue</text>
+  <text x="295" y="213" fill="#9AB5B4" font-family="Arial, sans-serif" font-size="12">One place to review, assign, and follow up.</text>
+  <rect x="1011" y="158" width="94" height="36" rx="7" fill="url(#glow)"/>
+  <text x="1058" y="180" text-anchor="middle" fill="#153840" font-family="Arial, sans-serif" font-size="11" font-weight="700">+ New ticket</text>
+
+  <rect x="293" y="241" width="516" height="389" rx="13" fill="#142A36" stroke="#3B5962"/>
+  <text x="317" y="270" fill="#D5F0E8" font-family="Arial, sans-serif" font-size="15" font-weight="700">Requests</text>
+  <text x="317" y="290" fill="#86A8A9" font-family="Arial, sans-serif" font-size="10">Fictional examples for interface preview</text>
+  <rect x="317" y="311" width="72" height="27" rx="6" fill="#31585D"/><text x="353" y="329" text-anchor="middle" fill="#D7F4EA" font-family="Arial, sans-serif" font-size="10" font-weight="700">All</text>
+  <rect x="396" y="311" width="68" height="27" rx="6" fill="#1D3945"/><text x="430" y="329" text-anchor="middle" fill="#A6C5C3" font-family="Arial, sans-serif" font-size="10">New</text>
+  <rect x="471" y="311" width="83" height="27" rx="6" fill="#1D3945"/><text x="512" y="329" text-anchor="middle" fill="#A6C5C3" font-family="Arial, sans-serif" font-size="10">Assigned</text>
+  <rect x="561" y="311" width="102" height="27" rx="6" fill="#1D3945"/><text x="612" y="329" text-anchor="middle" fill="#A6C5C3" font-family="Arial, sans-serif" font-size="10">Needs review</text>
+
+  <rect x="311" y="359" width="480" height="72" rx="9" fill="#244552" stroke="#56807E"/>
+  <rect x="324" y="374" width="4" height="42" rx="2" fill="#8DE1CC"/>
+  <text x="340" y="383" fill="#DDF2EC" font-family="Arial, sans-serif" font-size="13" font-weight="700">Workstation setup request</text>
+  <text x="340" y="404" fill="#A4C1BE" font-family="Arial, sans-serif" font-size="10">General support · Waiting for assignment</text>
+  <rect x="713" y="378" width="59" height="21" rx="10.5" fill="#315D60"/>
+  <text x="742" y="392" text-anchor="middle" fill="#BDECDD" font-family="Arial, sans-serif" font-size="9" font-weight="700">NEW</text>
+
+  <rect x="311" y="444" width="480" height="72" rx="9" fill="#1A3440" stroke="#3B5962"/>
+  <rect x="324" y="459" width="4" height="42" rx="2" fill="#A8BEE7"/>
+  <text x="340" y="468" fill="#E0F1EC" font-family="Arial, sans-serif" font-size="13" font-weight="700">Camera feed check</text>
+  <text x="340" y="489" fill="#9DB8B7" font-family="Arial, sans-serif" font-size="10">Capture setup · Technician assigned</text>
+  <rect x="695" y="463" width="77" height="21" rx="10.5" fill="#334C6A"/>
+  <text x="733" y="477" text-anchor="middle" fill="#D0DDF4" font-family="Arial, sans-serif" font-size="9" font-weight="700">ASSIGNED</text>
+
+  <rect x="311" y="529" width="480" height="72" rx="9" fill="#1A3440" stroke="#3B5962"/>
+  <rect x="324" y="544" width="4" height="42" rx="2" fill="#E5BD89"/>
+  <text x="340" y="553" fill="#E0F1EC" font-family="Arial, sans-serif" font-size="13" font-weight="700">Access issue follow-up</text>
+  <text x="340" y="574" fill="#9DB8B7" font-family="Arial, sans-serif" font-size="10">Account support · Awaiting review</text>
+  <rect x="667" y="548" width="105" height="21" rx="10.5" fill="#68523B"/>
+  <text x="719" y="562" text-anchor="middle" fill="#F2D6AC" font-family="Arial, sans-serif" font-size="9" font-weight="700">NEEDS REVIEW</text>
+
+  <rect x="828" y="241" width="277" height="389" rx="13" fill="#142A36" stroke="#3B5962"/>
+  <text x="850" y="271" fill="#D5F0E8" font-family="Arial, sans-serif" font-size="15" font-weight="700">Request detail</text>
+  <text x="850" y="293" fill="#86A8A9" font-family="Arial, sans-serif" font-size="10">Selected example</text>
+  <line x1="850" y1="310" x2="1083" y2="310" stroke="#365460"/>
+  <text x="850" y="338" fill="#EBF6F3" font-family="Arial, sans-serif" font-size="16" font-weight="700">Workstation setup</text>
+  <text x="850" y="358" fill="#9AB7B6" font-family="Arial, sans-serif" font-size="11">New · General support</text>
+  <text x="850" y="392" fill="#83A5A9" font-family="Arial, sans-serif" font-size="9" font-weight="700" letter-spacing="1.5">NEXT ACTION</text>
+  <rect x="850" y="405" width="233" height="41" rx="7" fill="#1F3D48" stroke="#496C72"/>
+  <circle cx="870" cy="426" r="8" fill="#3C696B"/><path d="M866 426H874M870 422V430" stroke="#B9E8D9" stroke-width="1.5"/>
+  <text x="886" y="430" fill="#DBEEE9" font-family="Arial, sans-serif" font-size="11">Assign to technician</text>
+  <text x="850" y="482" fill="#83A5A9" font-family="Arial, sans-serif" font-size="9" font-weight="700" letter-spacing="1.5">ACTIVITY</text>
+  <line x1="857" y1="503" x2="857" y2="583" stroke="#406A71" stroke-width="2"/>
+  <circle cx="857" cy="505" r="5" fill="#A4E6D0"/><text x="871" y="508" fill="#D1EAE4" font-family="Arial, sans-serif" font-size="10">Request created</text>
+  <circle cx="857" cy="542" r="5" fill="#53888A"/><text x="871" y="545" fill="#A6C5C2" font-family="Arial, sans-serif" font-size="10">Status recorded</text>
+  <circle cx="857" cy="579" r="5" fill="#53888A"/><text x="871" y="582" fill="#A6C5C2" font-family="Arial, sans-serif" font-size="10">Team update prepared</text>
+</svg>

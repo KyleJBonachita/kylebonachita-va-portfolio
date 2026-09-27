@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111b24">
+  <meta name="description" content="Tech Support Ticketing System case study by Kyle Josef M. Bonachita: a Google Apps Script support desk for requests, assignment, status tracking, and team updates.">
+  <title>Tech Support Ticketing System | Kyle Josef M. Bonachita</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="../theme.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../theme.css">
+  <script defer src="../site-config.js"></script>
+  <script defer src="../site.js"></script>
+</head>
+<body data-page="case">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top"><div class="container nav-shell">
+    <a class="brand" href="../index.html" aria-label="Portfolio home"><strong data-owner-name>Kyle Josef M. Bonachita</strong><span>Technical VA</span></a>
+    <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="site-nav" id="primary-nav" aria-label="Main navigation"><a href="../index.html#work">Work</a><a href="../index.html#web-development">Web development</a><a href="../index.html#about">About</a><a class="nav-contact" href="../index.html#contact">Contact <span aria-hidden="true">↗</span></a></nav>
+  </div></header>
+  <main id="main">
+    <section class="page-hero"><div class="container">
+      <a class="breadcrumb" href="../index.html#work">← Back to selected work</a>
+      <p class="eyebrow">BUILT PROJECT / WEB + OPERATIONS</p>
+      <h1>Tech Support Ticketing System</h1>
+      <p class="page-lead">A Google Apps Script support desk for recording requests, assigning work, tracking status changes, and preparing team updates.</p>
+      <dl class="case-facts"><div><dt>ROLE</dt><dd>Application and workflow development</dd></div><div><dt>FORMAT</dt><dd>Apps Script web app</dd></div><div><dt>TOOLS</dt><dd>Apps Script, Google Sheets, JavaScript, Teams notification payloads</dd></div><div><dt>STATUS</dt><dd>Built project; private work data excluded</dd></div></dl>
+    </div></section>
+    <section class="case-section"><div class="container">
+      <figure class="case-media"><img src="../assets/ticketing-preview.svg" width="1200" height="720" alt="Fictional support desk interface showing a request queue, status filters, and an assignment panel"><figcaption>Illustrative interface with fictional requests. No real tickets, people, team identifiers, or internal links are shown.</figcaption></figure>
+      <div class="case-detail"><h2>The problem</h2><div><p>When requests arrive through scattered messages, the support team needs a shared view of what is open, who owns the next action, and which changes need to reach the team. A clear history also helps explain what happened after a request was submitted.</p></div></div>
+      <div class="case-detail"><h2>What I built</h2><div><ul><li>Ticket intake and queue views with request details, filters, comments, and role-based permissions.</li><li>Assignment, transfer, status, resolution, reopening, and escalation actions with a recorded change history.</li><li>An operations dashboard that calculates ticket volume, urgent open work, response and resolution time, and downtime from stored records.</li><li>A notification queue that prepares updates for Microsoft Teams and Power Automate, including duplicate checks and delivery-attempt logging in the source.</li></ul></div></div>
+      <div class="case-detail"><h2>Why it works this way</h2><div><p><strong>Show ownership.</strong> Assignment and status are visible in the ticket record, so the next step is easier to find.</p><p><strong>Keep a trail.</strong> Comments and status events preserve the context behind changes.</p><p><strong>Make updates dependable.</strong> Queue handling separates a ticket change from the attempt to deliver a notification.</p></div></div>
+      <div class="case-status"><strong>Current status:</strong> The Apps Script source implements these workflows. The preview uses fictional data; this case study does not claim a public deployment, live integrations, or measured business results.</div>
+    </div></section>
+    <div class="container next-project"><span>NEXT PROJECT</span><a href="./device-custody.html">Device Custody Tracker ↗</a></div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-year>2026</span> <span data-owner-name>Kyle Josef M. Bonachita</span></span><span>Technical VA · Automation · Web support · Data</span><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>
