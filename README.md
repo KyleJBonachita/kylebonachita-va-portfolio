@@ -1,15 +1,16 @@
 # Kyle Josef M. Bonachita — Technical VA Portfolio
 
-A responsive portfolio focused on workflow automation, web and technical support, and data operations.
+A responsive portfolio of automation, web development, and data operations work.
 
 ![Portfolio desktop preview](./preview.png)
 
-## Selected work
+## Explore the work
 
-- **Appscripter:** a local dashboard and CLI for reviewing Google Apps Script source backups before optional publication.
-- **Morning Tech Team reminder:** a scheduled Power Automate flow that posts an Adaptive Card reminder in Microsoft Teams.
-- **Device Custody Tracker:** a responsive Apps Script web app for inventory, checkout, returns, and shift audits.
-- **Data Quality Lab:** an interactive browser demo that cleans fictional inventory CSV records and exports a reviewed file.
+Scroll through the three chapters in order, or use the focus selector to view one area and its projects. The selector supports direct links such as `#automation`, `#web-development`, and `#data-operations`. All project content remains available when JavaScript is off.
+
+- **Automation:** Appscripter, a local Google Apps Script backup dashboard and CLI; and a Power Automate reminder for a Microsoft Teams tech team.
+- **Web development:** Device Custody Tracker, a responsive Apps Script inventory web app; plus Appscripter's browser dashboard.
+- **Data operations:** Data Quality Lab, an interactive fictional CSV cleanup demo; plus the Device Custody Tracker's inventory record model.
 
 The case studies distinguish built projects, a built workflow, and a portfolio demo. Example images and CSV data use placeholders or fictional records; internal production data and private links are excluded.
 
@@ -27,4 +28,4 @@ Edit `site-config.js` to change the name, email, LinkedIn, GitHub, Upwork, or lo
 
 ## Checks
 
-The responsive layout, navigation, case-study pages, images, and CSV demo were checked in Chromium at desktop, tablet, and mobile widths.
+The responsive layout, focus selector, deep links, keyboard focus, case-study pages, images, and CSV demo were checked in Chromium at desktop, tablet, and mobile widths.
