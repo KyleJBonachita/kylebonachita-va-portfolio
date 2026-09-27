@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+  <title id="title">Device custody process</title>
+  <desc id="desc">Two individual sample devices move from inventory into one temporary checkout, then return to separate records with an audit entry.</desc>
+  <rect width="1200" height="600" fill="#f7f6f2"/>
+  <text x="62" y="66" fill="#285e59" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">DEVICE CUSTODY / PROCESS EXAMPLE</text>
+  <text x="62" y="121" fill="#1e2523" font-family="Arial, Helvetica, sans-serif" font-size="39" font-weight="700">Track the device. Record the handoff.</text>
+  <path d="M62 151H1138" stroke="#d9deda" stroke-width="2"/>
+
+  <rect x="62" y="191" width="316" height="304" rx="12" fill="#ffffff" stroke="#d9deda" stroke-width="2"/>
+  <text x="88" y="234" fill="#285e59" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" letter-spacing="1.5">01  INVENTORY</text>
+  <text x="88" y="276" fill="#1e2523" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">Separate records</text>
+  <rect x="88" y="307" width="264" height="51" rx="6" fill="#f7f6f2" stroke="#e2e5e1"/>
+  <rect x="88" y="369" width="264" height="51" rx="6" fill="#f7f6f2" stroke="#e2e5e1"/>
+  <text x="105" y="339" fill="#1e2523" font-family="Arial, Helvetica, sans-serif" font-size="17">Device 014</text>
+  <text x="105" y="401" fill="#1e2523" font-family="Arial, Helvetica, sans-serif" font-size="17">Device 027</text>
+  <text x="88" y="461" fill="#58635e" font-family="Arial, Helvetica, sans-serif" font-size="15">Status and condition are known.</text>
+
+  <path d="M392 343H426m-12-12 12 12-12 12" fill="none" stroke="#285e59" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="442" y="191" width="316" height="304" rx="12" fill="#ffffff" stroke="#d9deda" stroke-width="2"/>
+  <text x="468" y="234" fill="#285e59" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" letter-spacing="1.5">02  CHECKOUT</text>
+  <text x="468" y="276" fill="#1e2523" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">One temporary loan</text>
+  <rect x="468" y="307" width="264" height="113" rx="6" fill="#eaf0ec" stroke="#d5e1d9"/>
+  <text x="486" y="341" fill="#1e2523" font-family="Arial, Helvetica, sans-serif" font-size="17">Device 014 + Device 027</text>
+  <text x="486" y="374" fill="#285e59" font-family="Arial, Helvetica, sans-serif" font-size="16">Assigned to one borrower</text>
+  <text x="468" y="461" fill="#58635e" font-family="Arial, Helvetica, sans-serif" font-size="15">The handoff is logged.</text>
+
+  <path d="M772 343H806m-12-12 12 12-12 12" fill="none" stroke="#285e59" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="822" y="191" width="316" height="304" rx="12" fill="#ffffff" stroke="#d9deda" stroke-width="2"/>
+  <text x="848" y="234" fill="#285e59" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" letter-spacing="1.5">03  RETURN + AUDIT</text>
+  <text x="848" y="276" fill="#1e2523" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">Records updated</text>
+  <rect x="848" y="307" width="264" height="51" rx="6" fill="#f7f6f2" stroke="#e2e5e1"/>
+  <rect x="848" y="369" width="264" height="51" rx="6" fill="#f7f6f2" stroke="#e2e5e1"/>
+  <text x="865" y="339" fill="#1e2523" font-family="Arial, Helvetica, sans-serif" font-size="17">Device 014 returned</text>
+  <text x="865" y="401" fill="#1e2523" font-family="Arial, Helvetica, sans-serif" font-size="17">Device 027 returned</text>
+  <text x="848" y="461" fill="#58635e" font-family="Arial, Helvetica, sans-serif" font-size="15">Condition and history retained.</text>
+
+  <text x="62" y="551" fill="#65716a" font-family="Arial, Helvetica, sans-serif" font-size="14">Illustrative process using fictional device labels. No production records shown.</text>
+</svg>

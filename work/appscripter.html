@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f8f5">
+  <meta name="description" content="Appscripter case study by Kyle Josef M. Bonachita: a local Google Apps Script source archiver with review safeguards.">
+  <title>Appscripter | Kyle Josef M. Bonachita</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../styles.css">
+  <script defer src="../site-config.js"></script>
+  <script defer src="../site.js"></script>
+</head>
+<body data-page="case">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top"><div class="container nav-shell">
+    <a class="brand" href="../index.html" aria-label="Portfolio home"><strong data-owner-name>Kyle Josef M. Bonachita</strong><span>Technical VA</span></a>
+    <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="site-nav" id="primary-nav" aria-label="Main navigation"><a href="../index.html#work">Work</a><a href="../index.html#expertise">Expertise</a><a href="../index.html#about">About</a><a class="nav-contact" href="../index.html#contact">Contact <span aria-hidden="true">↗</span></a></nav>
+  </div></header>
+  <main id="main">
+    <section class="page-hero"><div class="container">
+      <a class="breadcrumb" href="../index.html#work">← Back to selected work</a>
+      <p class="eyebrow">BUILT PROJECT / AUTOMATION + WEB</p>
+      <h1>Appscripter</h1>
+      <p class="page-lead">A local dashboard and CLI that turns Google Apps Script source into a reviewed Git backup, with separate paths for private preservation and a shareable copy.</p>
+      <dl class="case-facts"><div><dt>ROLE</dt><dd>Tool design, frontend, workflow and safeguards</dd></div><div><dt>FORMAT</dt><dd>Local web dashboard + CLI</dd></div><div><dt>TOOLS</dt><dd>Node.js, clasp, Git, HTML, CSS, JavaScript</dd></div><div><dt>STATUS</dt><dd>Built local project</dd></div></dl>
+    </div></section>
+    <section class="case-section"><div class="container">
+      <figure class="case-media"><img src="../assets/appscripter-dashboard.png" width="1440" height="1000" alt="Appscripter dashboard explaining source-only access and showing the start of its export form"><figcaption>Local dashboard shown with placeholders. Linked Sheets and Drive files are outside the source download.</figcaption></figure>
+      <div class="case-detail"><h2>The problem</h2><div><p>Apps Script can contain important automation logic. Exporting it for backup or sharing still needs care: source files can include identifiers and references that should be reviewed before anything is published.</p></div></div>
+      <div class="case-detail"><h2>What I built</h2><div><ul><li>A dashboard and command-line flow for downloading Apps Script source through clasp.</li><li>One path for exact private backups and another for best-effort redacted, shareable copies.</li><li>Static checks and synthetic fixtures to review the source without opening linked business data.</li><li>A human review step before optional GitHub repository creation or push.</li></ul></div></div>
+      <div class="case-detail"><h2>Why it works this way</h2><div><p><strong>Limit access.</strong> The export targets script source files and does not follow links to spreadsheets or Drive data.</p><p><strong>Keep the choices visible.</strong> Private backups and shareable copies have different rules, so the tool makes the mode explicit.</p><p><strong>Review before publishing.</strong> The user inspects the result before any optional GitHub action.</p></div></div>
+      <div class="case-status"><strong>Current status:</strong> Built local tool. This case study shows the product and its design decisions; it does not claim a client deployment or measured time savings.</div>
+    </div></section>
+    <div class="container next-project"><span>NEXT PROJECT</span><a href="./teams-reminder.html">Morning Tech Team reminder ↗</a></div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-year>2026</span> <span data-owner-name>Kyle Josef M. Bonachita</span></span><span>Technical VA · Automation · Web support · Data</span><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>

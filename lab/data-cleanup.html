@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f8f5">
+  <meta name="description" content="Data Quality Lab by Kyle Josef M. Bonachita: a browser-only inventory CSV cleanup and review demo.">
+  <title>Data Quality Lab | Kyle Josef M. Bonachita</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../styles.css">
+  <script defer src="../site-config.js"></script>
+  <script defer src="../site.js"></script>
+  <script defer src="./data-cleanup.js"></script>
+</head>
+<body data-page="lab">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top"><div class="container nav-shell">
+    <a class="brand" href="../index.html" aria-label="Portfolio home"><strong data-owner-name>Kyle Josef M. Bonachita</strong><span>Technical VA</span></a>
+    <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="site-nav" id="primary-nav" aria-label="Main navigation"><a href="../index.html#work">Work</a><a href="../index.html#expertise">Expertise</a><a href="../index.html#about">About</a><a class="nav-contact" href="../index.html#contact">Contact <span aria-hidden="true">↗</span></a></nav>
+  </div></header>
+  <main id="main">
+    <section class="page-hero"><div class="container">
+      <a class="breadcrumb" href="../index.html#work">← Back to selected work</a>
+      <p class="eyebrow">INTERACTIVE DEMO / DATA OPERATIONS</p>
+      <h1>Data Quality Lab</h1>
+      <p class="page-lead">A small browser tool for cleaning fictional inventory CSV records, flagging issues for review, and exporting the checked result.</p>
+      <dl class="case-facts"><div><dt>ROLE</dt><dd>Demo design and implementation</dd></div><div><dt>FORMAT</dt><dd>Interactive, browser-only tool</dd></div><div><dt>TOOLS</dt><dd>JavaScript, HTML, CSS, CSV</dd></div><div><dt>STATUS</dt><dd>Portfolio demo with fictional data</dd></div></dl>
+    </div></section>
+    <section class="lab-section"><div class="container">
+      <p class="lab-intro">Run the sample below, or paste a four-column CSV with the header <strong>sku,item,quantity,location</strong>. The tool normalizes SKUs and spacing, checks quantities and required fields, and flags repeated SKUs. Your input stays in this browser.</p>
+      <div class="lab-card">
+        <div class="lab-card-head"><span>INVENTORY DATA REVIEW</span><span>LOCAL DEMO · NO UPLOAD</span></div>
+        <div class="lab-card-grid">
+          <div class="lab-input-panel"><h2>Source records</h2><p>Edit the fictional sample or paste your own CSV.</p><label class="lab-label" for="csv-input">CSV input</label><textarea class="lab-textarea" id="csv-input" spellcheck="false" aria-describedby="csv-help"></textarea><p id="csv-help" class="lab-privacy">Expected headers: sku, item, quantity, location. Quoted CSV fields are supported. Values resembling spreadsheet formulas are exported as text.</p><div class="lab-actions"><button class="button button-primary" type="button" id="run-cleanup">Run cleanup <span aria-hidden="true">↗</span></button><button class="button button-outline" type="button" id="load-sample">Load sample</button><button class="button button-outline" type="button" id="clear-input">Clear</button></div></div>
+          <div class="lab-output-panel"><h2>Review results</h2><p>Review flags stay visible alongside normalized records.</p><div class="lab-stats" aria-label="Cleanup summary"><div><small>ROWS</small><strong id="stat-rows">0</strong></div><div><small>READY</small><strong id="stat-ready">0</strong></div><div><small>REVIEW</small><strong id="stat-review">0</strong></div></div><div class="lab-message" id="lab-message" role="status" aria-live="polite">Run the sample to see normalized records and review flags.</div><div class="table-wrap"><table class="lab-table"><thead><tr><th scope="col">SKU</th><th scope="col">ITEM</th><th scope="col">QTY</th><th scope="col">LOCATION</th><th scope="col">STATUS</th></tr></thead><tbody id="result-body"><tr><td colspan="5">No results yet.</td></tr></tbody></table></div><ul class="lab-issues" id="issue-list" aria-label="Issues found"></ul><button class="button button-outline lab-download" type="button" id="download-csv" disabled>Download reviewed CSV ↓</button></div>
+        </div>
+      </div>
+      <div class="case-status"><strong>About this demo:</strong> It uses fictional records to demonstrate parsing, normalization, validation, review flags, and CSV export. It does not process production data or claim a client outcome.</div>
+    </div></section>
+    <div class="container next-project"><span>MORE WORK</span><a href="../index.html#work">Return to selected projects ↗</a></div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-year>2026</span> <span data-owner-name>Kyle Josef M. Bonachita</span></span><span>Technical VA · Automation · Web support · Data</span><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>
