@@ -50,6 +50,45 @@
       ]
     },
     {
+      "id": "gery-assistant",
+      "category": "automation",
+      "title": "Gery Robot Assistant",
+      "meta": [
+        "Public source",
+        "Document-grounded support"
+      ],
+      "summary": "A support assistant that turns approved documents into searchable answers and guided troubleshooting, with optional model API steps.",
+      "stack": [
+        "Node.js",
+        "JavaScript",
+        "REST API",
+        "Docker",
+        "Optional LLM API"
+      ],
+      "detail": "work/gery-assistant.html",
+      "code_url": "https://github.com/KyleJBonachita/NVGS-Server/tree/main/Chatbot_Gery_the_Robot_Assistant",
+      "overview": "The assistant keeps approved operating procedures available inside support tools and advances through troubleshooting steps without inventing missing instructions.",
+      "highlights": [
+        "Source-linked answers from a persistent knowledge index",
+        "Guided, one-check-at-a-time troubleshooting",
+        "Optional OpenAI-compatible API calls disabled by default"
+      ],
+      "outcome": "Public code and tests show the retrieval and optional API paths. A live model API workflow or business improvement is not verified here.",
+      "images": [
+        {
+          "src": "assets/gery-assistant-preview.svg",
+          "alt": "Illustrative Gery support assistant with source-linked answer and troubleshooting steps",
+          "caption": "Illustrative assistant flow; no internal documents or real support conversations shown."
+        }
+      ],
+      "workflow": [
+        {"title": "Approve a document", "detail": "Add a reviewed procedure to the private knowledge library."},
+        {"title": "Index it", "detail": "Extract searchable sections and guided troubleshooting checks."},
+        {"title": "Answer with context", "detail": "Match a question to stored source text and identify its source."},
+        {"title": "Escalate safely", "detail": "Report an unknown answer or use an explicitly enabled model API fallback."}
+      ]
+    },
+    {
       "id": "teams-reminder",
       "category": "automation",
       "title": "Morning Tech Team reminder",
@@ -160,6 +199,7 @@
         "Workflow design"
       ],
       "detail": "work/session-hub.html",
+      "code_url": "https://github.com/KyleJBonachita/nvidia-session-hub",
       "overview": "The hub brings several session-submission steps into one guided form so operators can submit more consistent records.",
       "highlights": [
         "Structured operator input",
@@ -191,6 +231,45 @@
           "title": "Trace",
           "detail": "Review the submitted record and downstream status."
         }
+      ]
+    },
+    {
+      "id": "nvgs-server",
+      "category": "web-development",
+      "title": "NVGS Server",
+      "meta": [
+        "Public source",
+        "Ticketing pilot"
+      ],
+      "summary": "A Django and PostgreSQL support platform with role-filtered APIs, ticket history, a notification worker, and a documented Ubuntu deployment path.",
+      "stack": [
+        "Python",
+        "Django",
+        "PostgreSQL",
+        "Docker",
+        "REST API"
+      ],
+      "detail": "work/nvgs-server.html",
+      "code_url": "https://github.com/KyleJBonachita/NVGS-Server",
+      "overview": "A shared ticket workflow needed stronger record ownership, controlled access, recoverable data, and operational checks beyond a spreadsheet-backed prototype.",
+      "highlights": [
+        "Role-filtered ticket endpoints and event history",
+        "PostgreSQL-backed records with a separate retrying alert worker",
+        "Pilot with test accounts and tickets completed; deployment tasks documented"
+      ],
+      "outcome": "A fake-data team pilot is documented. Live production import, alert delivery deployment, and measured service improvement are not claimed.",
+      "images": [
+        {
+          "src": "assets/nvgs-server-preview.svg",
+          "alt": "Illustrative NVGS ticket dashboard and service architecture",
+          "caption": "Illustrative interface and architecture; no real tickets, users, or network details shown."
+        }
+      ],
+      "workflow": [
+        {"title": "Capture a ticket", "detail": "Record the request with configured fields and a role-filtered queue."},
+        {"title": "Track work", "detail": "Assign, transition, comment, and preserve an event history."},
+        {"title": "Queue updates", "detail": "Commit the ticket first; retry notifications in a separate worker."},
+        {"title": "Operate safely", "detail": "Use health checks, backup tooling, tests, and a deployment runbook."}
       ]
     },
     {
@@ -253,7 +332,7 @@
       "stack": [
         "Google Apps Script",
         "Sheets",
-        "Teams integration"
+        "Teams-ready payloads"
       ],
       "detail": "work/ticketing-system.html",
       "overview": "A shared queue gives support staff a clear request owner, current status, and traceable next step when work moves between people.",
@@ -304,6 +383,7 @@
         "Device input"
       ],
       "detail": "work/foot-pedal-configurator.html",
+      "code_url": "https://github.com/KyleJBonachita/gr00t-foot-pedal-configurator",
       "overview": "This supporting software replaces a scattered, repeated input setup with one guided configuration flow.",
       "highlights": [
         "Detect existing and newly inserted devices",

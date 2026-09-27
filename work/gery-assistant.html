@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d141b">
+  <meta name="description" content="Gery Robot Assistant case study by Kyle Josef M. Bonachita: a Node.js knowledge assistant that retrieves approved procedures and guides troubleshooting one step at a time.">
+  <title>Gery Robot Assistant | Kyle Josef M. Bonachita</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="../theme.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="../case-details.css">
+  <script defer src="../site-config.js"></script>
+  <script defer src="../site.js"></script>
+</head>
+<body data-page="case">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top"><div class="container nav-shell">
+    <a class="brand" href="../index.html" aria-label="Portfolio home"><strong data-owner-name>Kyle Josef M. Bonachita</strong><span>Developer · Automation</span></a>
+    <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="site-nav" id="primary-nav" aria-label="Main navigation"><a href="../index.html#work">Work</a><a href="../index.html#automation">Automation</a><a href="../index.html#about">About</a><a class="nav-contact" href="../index.html#contact">Contact <span aria-hidden="true">↗</span></a></nav>
+  </div></header>
+  <main id="main">
+    <section class="page-hero"><div class="container">
+      <a class="breadcrumb" href="../index.html#automation">← Back to automation projects</a>
+      <p class="eyebrow">BUILT PROJECT / INTERNAL TOOLS + KNOWLEDGE</p>
+      <h1>Gery Robot Assistant</h1>
+      <p class="page-lead">A document-backed support assistant that returns approved procedures, cites their source, and can guide a technician through one troubleshooting check at a time.</p>
+      <dl class="case-facts"><div><dt>ROLE</dt><dd>Assistant workflow and application development</dd></div><div><dt>FORMAT</dt><dd>Node.js service, chat page and embedded widget</dd></div><div><dt>TOOLS</dt><dd>JavaScript, Express, REST API, Docker, local document indexing</dd></div><div><dt>STATUS</dt><dd>Public source; deployment status unverified</dd></div></dl>
+    </div></section>
+    <section class="case-section"><div class="container">
+      <figure class="case-media"><img src="../assets/gery-assistant-preview.svg" width="1200" height="720" alt="Illustrative Gery chat interface showing a fictional printer troubleshooting procedure, source reference, and step-by-step response buttons"><figcaption>Illustrative preview with a fictional troubleshooting example. It shows the interaction pattern, not internal documents or a live deployment.</figcaption></figure>
+      <div class="case-detail"><h2>The problem</h2><div><p>Support procedures lose value when someone has to search several files, guess which answer is current, or skip a check in a long troubleshooting list. An assistant for operational work needs to stay close to approved documentation and make its source visible.</p></div></div>
+      <div class="case-detail"><h2>What I built</h2><div><ul><li>A Node.js and Express service that extracts text from Markdown, text, and PDF documents, sections it, and saves a reusable local knowledge index.</li><li>A <code>/chat</code> endpoint that matches questions to stored answers and returns source information. Normal matched answers do not call a model.</li><li>A guided troubleshooting flow that reads an ordered SOP, asks one check at a time, and offers a full-procedure view or a way to cancel.</li><li>A standalone chat page, a widget designed for the NVGS dashboard and DownloadServer, and a token-gated knowledge manager for uploading, reprocessing, and removing documents.</li></ul></div></div>
+      <div class="case-detail"><h2>Where AI fits</h2><div><p>The code includes an optional OpenAI-compatible chat-completions client. If enabled, it can suggest search questions and keywords when documents are processed, or answer an unmatched question using nearby stored context. Both switches are <strong>off by default</strong>. The documented answer remains the approved source text; an unavailable model does not prevent local retrieval. The public code supports the integration, but I have not verified that a model endpoint has been used in a live workflow.</p></div></div>
+      <div class="case-detail" id="workflow"><h2>Operating procedure</h2><div><ol class="case-sop"><li><strong>Approve and add the source</strong><p>Upload an approved Markdown, text, or PDF procedure through the token-gated manager. Internal SOP files and the processed index stay outside the public repository.</p></li><li><strong>Process and inspect</strong><p>Build the local index, check the document and guided-flow counts, and review whether the procedure has ordered checks, confirmation prompts, and escalation guidance.</p></li><li><strong>Ask and follow the source</strong><p>Use the chat page or embedded widget. Follow the cited answer or work through the guided checks in order; open the full SOP when more context is needed.</p></li><li><strong>Handle gaps and maintain it</strong><p>If no confident match exists, the default response directs the person to support rather than inventing steps. Update the approved document and reprocess the index when the procedure changes.</p></li></ol></div></div>
+      <div class="case-detail"><h2>Engineering evidence</h2><div><p>The public repository contains the Express routes, retrieval and guided-troubleshooting services, model-client adapter, Docker configuration, and Node test files for retrieval, knowledge storage, guided flows, prompts, and model URL handling. The manager requires a bearer token; remote administration is restricted to HTTPS by default. The source describes a health check and a same-origin widget bootstrap so the assistant appears only when the service responds.</p><a class="case-inline-link" href="https://github.com/KyleJBonachita/NVGS-Server/tree/main/Chatbot_Gery_the_Robot_Assistant" target="_blank" rel="noopener noreferrer">View public source and setup notes ↗</a></div></div>
+      <div class="case-detail"><h2>Outcome and limits</h2><div><p>The implementation provides a repeatable path from approved documents to cited answers and guided checks. Its design reduces the need for a model call on routine matched questions, but no measured time saving, answer accuracy rate, or production usage result is available here. The deployment status and any actual model endpoint use remain to be confirmed.</p></div></div>
+      <div class="case-status"><strong>Evidence and limits:</strong> Features above are grounded in the public source and README. The preview is fictional. This case does not claim live deployment, production model usage, or measured business results.</div>
+    </div></section>
+    <div class="container next-project"><span>NEXT PROJECT</span><a href="./teams-reminder.html">Morning Tech Team reminder ↗</a></div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-year>2026</span> <span data-owner-name>Kyle Josef M. Bonachita</span></span><span>Automation · Web development · Data operations</span><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>

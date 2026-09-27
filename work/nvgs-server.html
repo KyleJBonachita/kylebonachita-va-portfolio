@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d141b">
+  <meta name="description" content="NVGS Server case study by Kyle Josef M. Bonachita: a Django, PostgreSQL, and Docker ticketing platform with role-based workflows, audit history, and queued integrations.">
+  <title>NVGS Server | Kyle Josef M. Bonachita</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="../theme.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="../case-details.css">
+  <script defer src="../site-config.js"></script>
+  <script defer src="../site.js"></script>
+</head>
+<body data-page="case">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top"><div class="container nav-shell">
+    <a class="brand" href="../index.html" aria-label="Portfolio home"><strong data-owner-name>Kyle Josef M. Bonachita</strong><span>Developer · Automation</span></a>
+    <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="site-nav" id="primary-nav" aria-label="Main navigation"><a href="../index.html#work">Work</a><a href="../index.html#web-development">Web development</a><a href="../index.html#about">About</a><a class="nav-contact" href="../index.html#contact">Contact <span aria-hidden="true">↗</span></a></nav>
+  </div></header>
+  <main id="main">
+    <section class="page-hero"><div class="container">
+      <a class="breadcrumb" href="../index.html#web-development">← Back to web projects</a>
+      <p class="eyebrow">BUILT PROJECT / INTERNAL PLATFORM</p>
+      <h1>NVGS Server</h1>
+      <p class="page-lead">A Django and PostgreSQL platform that moves a support ticket workflow toward a maintainable server, with a browser dashboard, role-aware API, audit history, and isolated notification delivery.</p>
+      <div class="hero-actions"><a class="button button-outline" href="https://github.com/KyleJBonachita/NVGS-Server" target="_blank" rel="noopener noreferrer">View public source <span aria-hidden="true">↗</span></a><a class="text-link" href="#workflow">Read the operating procedure <span aria-hidden="true">↓</span></a></div>
+      <dl class="case-facts"><div><dt>ROLE</dt><dd>Application, integration, and operations development</dd></div><div><dt>STACK</dt><dd>Python, Django, PostgreSQL, Docker, Caddy, JavaScript</dd></div><div><dt>CONNECTIONS</dt><dd>Apps Script login bridge; optional webhook or email → Power Automate → Teams</dd></div><div><dt>STATUS</dt><dd>Fake-data workflow pilot completed; rollout steps remain</dd></div></dl>
+    </div></section>
+    <section class="case-section"><div class="container">
+      <figure class="case-media"><img src="../assets/nvgs-server-preview.svg" width="1200" height="720" style="height:auto" alt="Illustrative NVGS Server view showing a fictional ticket queue and the Caddy, Django, PostgreSQL, and notification service architecture"><figcaption>Illustrative preview with fictional tickets. It is not a production screenshot and contains no real team records or credentials.</figcaption></figure>
+
+      <div class="case-detail"><h2>The problem</h2><div><p>The earlier Apps Script ticketing workflow established how support requests should be created, assigned, updated, and resolved. Moving that workflow to a dedicated server raised a broader engineering problem: preserve the familiar ticket process while adding dependable permissions, audit history, database storage, deployment steps, and a safe path for existing notifications.</p></div></div>
+
+      <div class="case-detail"><h2>What I built</h2><div><ul><li>A Django ticketing dashboard and REST API for intake, assignment, status transitions, comments, escalation, analytics, filtered CSV export, and bulk Team actions.</li><li>Role-filtered access for agents, the Tech Team, and system administrators. Agents see their own requests; internal notes and administration stay behind server-side checks.</li><li>PostgreSQL ticket storage with per-ticket audit events, repeatable import tooling for earlier Apps Script exports, and a Docker Compose setup fronted by Caddy HTTPS.</li><li>A separate notification worker that queues ticket events and can deliver through an approved HTTPS webhook or the existing email → Power Automate → Teams route.</li><li>Deployment, pilot, backup, restore-verification, and recovery procedures in the public repository.</li></ul></div></div>
+
+      <div class="case-detail"><h2>How the pieces connect</h2><div><p><strong>Browser → Caddy → Django → PostgreSQL.</strong> Caddy is the HTTPS entry point. Django handles sessions, permissions, workflow rules, and API responses. PostgreSQL stays on a private Docker network rather than exposing database credentials or a database port to user laptops.</p><p><strong>Ticket save → notification queue → approved delivery route.</strong> The ticket is saved first. A separate worker retries failed deliveries, so an email or Teams outage does not prevent ticket creation. The compatible <code>GRTKT_EVENT</code> payload lets an approved Power Automate flow continue parsing and posting updates.</p><p><strong>Optional Apps Script login bridge.</strong> A short-lived signed assertion can carry a verified Workspace email into Django. That bridge is implemented but disabled by default; official corporate SSO requires separate approval.</p></div></div>
+
+      <div class="case-detail"><h2>Engineering evidence</h2><div><p>The public repository includes the <a href="https://github.com/KyleJBonachita/NVGS-Server" target="_blank" rel="noopener noreferrer">application source and Compose configuration ↗</a>, a <a href="https://github.com/KyleJBonachita/NVGS-Server/blob/main/docs/PILOT.md" target="_blank" rel="noopener noreferrer">fake-data pilot checklist ↗</a>, <a href="https://github.com/KyleJBonachita/NVGS-Server/blob/main/docs/API.md" target="_blank" rel="noopener noreferrer">API and permission notes ↗</a>, and <a href="https://github.com/KyleJBonachita/NVGS-Server/blob/main/docs/TICKET_NOTIFICATIONS.md" target="_blank" rel="noopener noreferrer">notification setup and retry instructions ↗</a>. Django and companion JavaScript tests are included. The repo documents a backup-before-update command and an isolated restore-verification helper; a real backup still needs a saved PASS report.</p></div></div>
+
+      <div class="case-detail" id="workflow"><h2>Operating procedure</h2><div><ol class="case-sop"><li><strong>Start with a controlled pilot</strong><p>Deploy from versioned source, use generated fake users and tickets, and check the health endpoint before inviting approved clients.</p></li><li><strong>Check each role</strong><p>Confirm an agent sees only their requests while Team users can assign, transition, resolve, and escalate. Verify internal notes and administration stay restricted.</p></li><li><strong>Enable one approved alert route</strong><p>Keep alerts disabled until the webhook, SMTP account, or signed Apps Script bridge is approved. Send a fake event, inspect the worker log, and confirm the Teams result.</p></li><li><strong>Protect the data before migration</strong><p>Take a database backup, run isolated restore verification, then import earlier records only after pilot acceptance. Keep secrets and production exports out of GitHub.</p></li><li><strong>Document the handoff</strong><p>Record the LAN address, certificate checks, pilot results, remaining approvals, and recovery steps so another maintainer can repeat the deployment.</p></li></ol></div></div>
+
+      <div class="case-detail"><h2>Outcome and current limits</h2><div><p>The project team reported the fake-account Agent, Tech Team, TL, and Manager workflow pilot complete. The code and setup paths are public and reviewable. Real ticket import is intentionally waiting; notification delivery still needs an approved deployment route, and stable LAN naming plus client HTTPS checks require rollout work. I do not claim a production launch, a currently running server, or a measured reduction in ticket time from this evidence.</p><a class="case-inline-link" href="https://github.com/KyleJBonachita/NVGS-Server/blob/main/docs/PRODUCTION_READINESS.md" target="_blank" rel="noopener noreferrer">Read the production-readiness record ↗</a></div></div>
+      <div class="case-status"><strong>Current status:</strong> Implemented platform and completed fake-data workflow pilot. Production rollout and live integration status need confirmation before they are described as active.</div>
+    </div></section>
+    <div class="container next-project"><span>NEXT PROJECT</span><a href="./ticketing-system.html">Tech Support Ticketing System ↗</a></div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-year>2026</span> <span data-owner-name>Kyle Josef M. Bonachita</span></span><span>Automation · Web development · Data operations</span><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>

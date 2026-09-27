@@ -1,6 +1,6 @@
-# Kyle Josef M. Bonachita — Technical VA Portfolio
+# Kyle Josef M. Bonachita — Developer & Automation Portfolio
 
-A static portfolio for automation, web development, and data operations. The site opens in dark mode; its header switch saves a light-mode choice in the browser.
+A static portfolio for internal tools, automation, and data operations. It opens in dark mode; its header switch saves a light-mode choice in the browser.
 
 ![Portfolio desktop preview](./preview.png)
 
@@ -8,11 +8,11 @@ A static portfolio for automation, web development, and data operations. The sit
 
 Scroll through all three specialties or use the project chooser to focus on one. Deep links such as `#automation`, `#web-development`, and `#data-operations` work with browser history. Each card opens a project preview with a slide gallery, image zoom, a case-study link, and a demo link. Cards remain readable and link to their case studies when JavaScript is unavailable.
 
-- **Automation:** Appscripter, Morning Tech Team reminder, Session Segregator, and NVIDIA Session Hub.
-- **Web development and technical tools:** Device Custody Tracker, Tech Support Ticketing System, Foot Pedal Configurator, and RFID Attendance Management.
+- **Automation:** Appscripter, Gery Knowledge Assistant, Morning Tech Team reminder, Session Segregator, and NVIDIA Session Hub.
+- **Web development and technical tools:** NVGS Server, Device Custody Tracker, Tech Support Ticketing System, Foot Pedal Configurator, and RFID Attendance Management.
 - **Data operations:** Inventory CSV Cleanup Demo, Equipment Inventory & Handoffs, Hotel Booking Record Review, Sales & Inventory Record Review, and an earlier transaction-analysis study.
 
-The internal-tool previews and guided walkthroughs use illustrative or invented content. The inventory cleanup demo uses fictional rows and lets visitors filter, exclude or restore rows, then export ready records and a complete review trail. The hotel and e-commerce pages publish aggregate results from locally analyzed datasets and include reproducible Python scripts. No raw booking, order, customer, address, inventory-price, or internal work records are included in the site. The hotel review script can optionally create a **private local** review CSV; keep that output out of the repository. The ticketing case study includes one clearly labeled hypothetical impact calculation; it is not a measured project result.
+The NVGS and Gery case studies link to their public source. NVGS documents a completed fake-data pilot; its production import and some deployment steps remain to be confirmed. Gery's model API code is optional and disabled by default, so the portfolio makes no claim of live LLM API use. The internal-tool previews and guided walkthroughs use illustrative or invented content. The inventory cleanup demo uses fictional rows and lets visitors filter, exclude or restore rows, then export ready records and a complete review trail. The hotel and e-commerce pages publish aggregate results from locally analyzed datasets and include reproducible Python scripts. No raw booking, order, customer, address, inventory-price, or internal work records are included in the site. The hotel review script can optionally create a **private local** review CSV; keep that output out of the repository. The ticketing case study includes one clearly labeled hypothetical impact calculation; it is not a measured project result.
 
 ## Run locally
 
@@ -37,7 +37,7 @@ The project list lives in `projects.json`. Add images under `assets/`, edit the 
 
     python scripts/build_portfolio.py
 
-The builder updates static homepage cards, `projects-data.js`, and an illustrated workflow slide for each project. You can add as many images as you like in a project's `images` list. Use `templates/project-case.html` as a starting page for a new case study. See [HOW_TO_ADD_PROJECTS.md](./HOW_TO_ADD_PROJECTS.md) for a complete walkthrough.
+The builder updates static homepage cards, `projects-data.js`, and an illustrated workflow slide for each project. Each card displays the project's `stack` as skill badges. You can add as many images as you like in a project's `images` list, and add a public source link with `code_url`. Use `templates/project-case.html` as a starting page for a new case study. See [HOW_TO_ADD_PROJECTS.md](./HOW_TO_ADD_PROJECTS.md) for a complete walkthrough.
 
 ## Update details
 

@@ -80,10 +80,11 @@
     const actions = element("div", "project-dialog-actions");
     const seeMore = element("a", "project-dialog-action project-dialog-action-primary", "See more · full case study");
     const tryDemo = element("a", "project-dialog-action project-dialog-action-secondary", "Try demo");
+    const viewCode = element("a", "project-dialog-action project-dialog-action-secondary", "View code");
     const demoUnavailable = button("project-dialog-action project-dialog-action-secondary", "Demo is not publicly available", "Try demo");
     demoUnavailable.disabled = true;
     const demoNote = element("p", "project-dialog-demo-note");
-    actions.append(seeMore, tryDemo, demoUnavailable);
+    actions.append(seeMore, tryDemo, demoUnavailable, viewCode);
     copy.append(meta, title, summary, detail, highlights, outcome, stack, actions, demoNote);
     grid.append(media, copy);
     shell.append(header, grid);
@@ -287,6 +288,10 @@
         ? entry.demo.note
         : demoHref ? "" : "A public demo is not available for this project yet.";
       demoNote.hidden = !demoNote.textContent;
+      const codeHref = typeof entry.code_url === "string" && /^https:\/\/github\.com\/KyleJBonachita\/[A-Za-z0-9_.-]+(?:\/[^\s]*)?$/.test(entry.code_url)
+        ? entry.code_url : "";
+      viewCode.hidden = !codeHref;
+      if (codeHref) viewCode.href = codeHref;
       renderSlide();
       dialog.showModal();
       close.focus();

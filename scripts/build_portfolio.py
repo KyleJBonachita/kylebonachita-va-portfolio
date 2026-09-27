@@ -83,16 +83,21 @@ def render_card(project: dict) -> str:
     demo = "./" + project["demo"]["href"]
     visual_class = {"automation": "visual--automation", "web-development": "visual--web", "data-operations": "visual--data"}[project["category"]]
     card_class = "chapter-project chapter-project--secondary" if project.get("secondary") else "chapter-project"
-    stack = " · ".join(project["stack"])
+    stack = "".join(f"<li>{esc(skill)}</li>" for skill in project["stack"])
+    code_link = (
+        f'<a class="chapter-project-code" href="{esc(project["code_url"])}">View code <span aria-hidden="true">↗</span></a>'
+        if project.get("code_url") else ""
+    )
     return (
         f'          <article class="{card_class}" data-project-id="{esc(project["id"])}" data-reveal>\n'
         f'            <a class="chapter-project-visual {visual_class}" href="{esc(detail)}" data-open-project="{esc(project["id"])}" aria-label="Preview {esc(project["title"])}">'
         f'<img src="./{esc(image["src"])}" alt="{esc(image["alt"])}" width="1200" height="720" loading="lazy"><span class="project-visual-cta" aria-hidden="true">View gallery ↗</span></a>\n'
         f'            <div class="chapter-project-content"><div class="chapter-project-meta"><span>{esc(project["meta"][0])}</span><span>{esc(project["meta"][1])}</span></div>'
-        f'<h3>{esc(project["title"])}</h3><p>{esc(project["summary"])}</p><p class="project-stack">{esc(stack)}</p>'
+        f'<h3>{esc(project["title"])}</h3><p>{esc(project["summary"])}</p><ul class="project-skills" aria-label="Skills used">{stack}</ul>'
         f'<div class="chapter-project-actions">'
         f'<a class="chapter-project-link" href="{esc(detail)}">See more <span aria-hidden="true">↗</span></a>'
         f'<a class="chapter-project-demo" href="{esc(demo)}">Try demo <span aria-hidden="true">↗</span></a>'
+        f'{code_link}'
         f'</div></div>\n'
         '          </article>'
     )
@@ -158,6 +163,10 @@ def main() -> None:
             }
         if not safe_local_path(project["demo"]["href"]).is_file():
             raise ValueError(f"{identifier}: demo page does not exist")
+        if project.get("code_url"):
+            code = urlsplit(project["code_url"])
+            if code.scheme != "https" or code.netloc != "github.com" or not code.path.startswith("/KyleJBonachita/"):
+                raise ValueError(f"{identifier}: code_url must link to Kyle's GitHub repository")
 
     page = INDEX.read_text(encoding="utf-8")
     for category in CATEGORIES:

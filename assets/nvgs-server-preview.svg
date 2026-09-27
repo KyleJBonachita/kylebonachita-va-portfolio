@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Illustrative NVGS Server ticketing platform</title>
+  <desc id="desc">A fictional support queue beside a diagram of the Caddy, Django, PostgreSQL, and notification services. This is an illustrative preview, not a production screenshot.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1200" y2="720" gradientUnits="userSpaceOnUse"><stop stop-color="#0B1527"/><stop offset="1" stop-color="#172642"/></linearGradient>
+    <linearGradient id="topbar" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#1A2C47"/><stop offset="1" stop-color="#223C5B"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8BC5FF"/><stop offset="1" stop-color="#6E9CEB"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#030915" flood-opacity=".5"/></filter>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#8DB3D6" stroke-opacity=".06"/></pattern>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#background)"/>
+  <rect width="1200" height="720" fill="url(#grid)"/>
+  <circle cx="1020" cy="80" r="255" fill="#4172C5" opacity=".12"/>
+  <circle cx="150" cy="690" r="250" fill="#4D77C6" opacity=".11"/>
+
+  <g filter="url(#shadow)">
+    <rect x="52" y="48" width="1096" height="624" rx="20" fill="#101D31" stroke="#416184" stroke-width="1.5"/>
+    <path d="M72 48H1128C1139 48 1148 57 1148 68V104H52V68C52 57 61 48 72 48Z" fill="url(#topbar)"/>
+    <path d="M52 104H1148" stroke="#416184"/>
+  </g>
+
+  <circle cx="82" cy="76" r="5" fill="#E6A19A"/><circle cx="101" cy="76" r="5" fill="#E7C98E"/><circle cx="120" cy="76" r="5" fill="#9ACFBC"/>
+  <rect x="415" y="63" width="370" height="26" rx="13" fill="#12243D" stroke="#54739A"/>
+  <path d="M434 73v-4h8v4m-9 0h10v8h-10z" fill="none" stroke="#A8BED8" stroke-width="1.2"/>
+  <text x="458" y="80" fill="#B6C9DE" font-family="Arial, sans-serif" font-size="11" letter-spacing=".4">NVGS SERVER  /  PILOT VIEW</text>
+  <rect x="1002" y="62" width="113" height="28" rx="14" fill="#284F63" stroke="#5C9C9E"/>
+  <circle cx="1019" cy="76" r="4" fill="#9AE1C5"/>
+  <text x="1033" y="80" fill="#CBF0E0" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1">HEALTHY</text>
+
+  <path d="M52 104H244V672H72C61 672 52 663 52 652V104Z" fill="#13243A"/>
+  <path d="M244 104V672" stroke="#355374"/>
+  <rect x="75" y="130" width="34" height="34" rx="9" fill="url(#accent)"/>
+  <path d="M84 150v-11l8 7 8-7v11" fill="none" stroke="#193754" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="122" y="143" fill="#E4F2FF" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1">NVGS</text>
+  <text x="122" y="160" fill="#8DA8C6" font-family="Arial, sans-serif" font-size="9" letter-spacing="1.5">SERVER PLATFORM</text>
+  <text x="79" y="217" fill="#7898BB" font-family="Arial, sans-serif" font-size="9" font-weight="700" letter-spacing="2">WORKSPACE</text>
+  <rect x="70" y="232" width="159" height="39" rx="8" fill="#234568"/>
+  <rect x="70" y="232" width="3" height="39" rx="1.5" fill="#90C6FF"/>
+  <rect x="88" y="245" width="12" height="11" rx="2" fill="none" stroke="#A4D2FF" stroke-width="1.5"/>
+  <path d="M90 248h8m-8 4h6" stroke="#A4D2FF" stroke-width="1.1"/>
+  <text x="112" y="256" fill="#E2F1FF" font-family="Arial, sans-serif" font-size="12" font-weight="700">Ticket queue</text>
+  <path d="M89 303h12m-12 5h12m-12 5h8" stroke="#82A0C0" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="112" y="313" fill="#9EB5CD" font-family="Arial, sans-serif" font-size="12">Audit history</text>
+  <path d="M89 351v-13m6 13v-9m6 9v-17" stroke="#82A0C0" stroke-width="2" stroke-linecap="round"/>
+  <text x="112" y="351" fill="#9EB5CD" font-family="Arial, sans-serif" font-size="12">Analytics</text>
+  <path d="M88 388h13v12H88z" fill="none" stroke="#82A0C0" stroke-width="1.5"/><path d="m88 389 7 6 6-6" fill="none" stroke="#82A0C0" stroke-width="1.5"/>
+  <text x="112" y="398" fill="#9EB5CD" font-family="Arial, sans-serif" font-size="12">Notifications</text>
+  <path d="M78 612H220" stroke="#355374"/>
+  <circle cx="89" cy="639" r="7" fill="#315578"/>
+  <text x="105" y="642" fill="#89A4C3" font-family="Arial, sans-serif" font-size="10">Fictional sample data</text>
+
+  <text x="278" y="149" fill="#83B5E6" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="2">SERVICE OPERATIONS / SYSTEM VIEW</text>
+  <text x="278" y="188" fill="#EEF6FF" font-family="Arial, sans-serif" font-size="30" font-weight="700">Ticketing, with a clearer trail.</text>
+  <text x="279" y="211" fill="#9AB2CC" font-family="Arial, sans-serif" font-size="12">Role-aware workflows, stored history, and a separate route for alerts.</text>
+
+  <rect x="278" y="244" width="478" height="384" rx="14" fill="#172942" stroke="#3B5B7D"/>
+  <text x="303" y="276" fill="#E4F0FD" font-family="Arial, sans-serif" font-size="15" font-weight="700">Support queue</text>
+  <text x="303" y="296" fill="#8FA9C7" font-family="Arial, sans-serif" font-size="10">Example pilot tickets</text>
+  <rect x="649" y="261" width="82" height="29" rx="6" fill="url(#accent)"/>
+  <text x="690" y="280" text-anchor="middle" fill="#10243F" font-family="Arial, sans-serif" font-size="10" font-weight="700">+ New ticket</text>
+  <rect x="303" y="317" width="66" height="25" rx="6" fill="#30577A"/>
+  <text x="336" y="334" text-anchor="middle" fill="#DDEEFF" font-family="Arial, sans-serif" font-size="10" font-weight="700">All</text>
+  <rect x="375" y="317" width="66" height="25" rx="6" fill="#203954"/>
+  <text x="408" y="334" text-anchor="middle" fill="#A4BDD6" font-family="Arial, sans-serif" font-size="10">Open</text>
+  <rect x="447" y="317" width="92" height="25" rx="6" fill="#203954"/>
+  <text x="493" y="334" text-anchor="middle" fill="#A4BDD6" font-family="Arial, sans-serif" font-size="10">In progress</text>
+  <rect x="545" y="317" width="89" height="25" rx="6" fill="#203954"/>
+  <text x="589" y="334" text-anchor="middle" fill="#A4BDD6" font-family="Arial, sans-serif" font-size="10">Resolved</text>
+
+  <rect x="302" y="363" width="430" height="73" rx="9" fill="#244261" stroke="#668AB0"/>
+  <rect x="315" y="377" width="4" height="45" rx="2" fill="#91CAFF"/>
+  <text x="329" y="387" fill="#E4F1FF" font-family="Arial, sans-serif" font-size="13" font-weight="700">Workstation setup request</text>
+  <text x="329" y="408" fill="#A9C0D6" font-family="Arial, sans-serif" font-size="10">PILOT-001  ·  Waiting for assignment</text>
+  <rect x="669" y="381" width="51" height="20" rx="10" fill="#375F84"/>
+  <text x="694" y="395" text-anchor="middle" fill="#D2E8FA" font-family="Arial, sans-serif" font-size="9" font-weight="700">OPEN</text>
+
+  <rect x="302" y="449" width="430" height="73" rx="9" fill="#1C344F" stroke="#405F80"/>
+  <rect x="315" y="463" width="4" height="45" rx="2" fill="#A5B7FF"/>
+  <text x="329" y="473" fill="#DFECFC" font-family="Arial, sans-serif" font-size="13" font-weight="700">Equipment check follow-up</text>
+  <text x="329" y="494" fill="#9CB3CE" font-family="Arial, sans-serif" font-size="10">PILOT-002  ·  Team member assigned</text>
+  <rect x="643" y="467" width="77" height="20" rx="10" fill="#3C4F7F"/>
+  <text x="681" y="481" text-anchor="middle" fill="#D7DFFD" font-family="Arial, sans-serif" font-size="9" font-weight="700">IN PROGRESS</text>
+
+  <rect x="302" y="535" width="430" height="73" rx="9" fill="#1C344F" stroke="#405F80"/>
+  <rect x="315" y="549" width="4" height="45" rx="2" fill="#D7B795"/>
+  <text x="329" y="559" fill="#DFECFC" font-family="Arial, sans-serif" font-size="13" font-weight="700">Access issue review</text>
+  <text x="329" y="580" fill="#9CB3CE" font-family="Arial, sans-serif" font-size="10">PILOT-003  ·  Resolution note recorded</text>
+  <rect x="654" y="553" width="66" height="20" rx="10" fill="#6A554B"/>
+  <text x="687" y="567" text-anchor="middle" fill="#FFE1C3" font-family="Arial, sans-serif" font-size="9" font-weight="700">RESOLVED</text>
+
+  <rect x="774" y="244" width="342" height="384" rx="14" fill="#16273D" stroke="#3B5B7D"/>
+  <text x="798" y="276" fill="#E4F0FD" font-family="Arial, sans-serif" font-size="15" font-weight="700">Behind the interface</text>
+  <text x="798" y="297" fill="#8FA9C7" font-family="Arial, sans-serif" font-size="10">Documented service boundaries</text>
+  <rect x="799" y="320" width="290" height="52" rx="8" fill="#243E5B" stroke="#577799"/>
+  <rect x="813" y="334" width="25" height="25" rx="6" fill="#426D91"/>
+  <path d="M819 346h13m-6-5v10" stroke="#DCEEFF" stroke-width="1.8" stroke-linecap="round"/>
+  <text x="851" y="342" fill="#E3EFFD" font-family="Arial, sans-serif" font-size="12" font-weight="700">Caddy / HTTPS</text>
+  <text x="851" y="358" fill="#A4BDD6" font-family="Arial, sans-serif" font-size="10">Secure browser entry</text>
+  <path d="M944 372v13" stroke="#6E9CEB" stroke-width="2"/><path d="m939 381 5 5 5-5" fill="none" stroke="#6E9CEB" stroke-width="2"/>
+  <rect x="799" y="390" width="290" height="52" rx="8" fill="#243E5B" stroke="#577799"/>
+  <rect x="813" y="404" width="25" height="25" rx="6" fill="#426D91"/>
+  <path d="m819 413 5 4-5 4m11-8-5 4 5 4" fill="none" stroke="#DCEEFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="851" y="412" fill="#E3EFFD" font-family="Arial, sans-serif" font-size="12" font-weight="700">Django / Python</text>
+  <text x="851" y="428" fill="#A4BDD6" font-family="Arial, sans-serif" font-size="10">API, roles, ticket rules</text>
+  <path d="M944 442v13" stroke="#6E9CEB" stroke-width="2"/><path d="m939 451 5 5 5-5" fill="none" stroke="#6E9CEB" stroke-width="2"/>
+  <rect x="799" y="460" width="290" height="52" rx="8" fill="#243E5B" stroke="#577799"/>
+  <rect x="813" y="474" width="25" height="25" rx="6" fill="#426D91"/>
+  <ellipse cx="825" cy="481" rx="7" ry="3" fill="none" stroke="#DCEEFF" stroke-width="1.3"/><path d="M818 481v10c0 4 14 4 14 0v-10m-14 5c0 4 14 4 14 0" fill="none" stroke="#DCEEFF" stroke-width="1.3"/>
+  <text x="851" y="482" fill="#E3EFFD" font-family="Arial, sans-serif" font-size="12" font-weight="700">PostgreSQL</text>
+  <text x="851" y="498" fill="#A4BDD6" font-family="Arial, sans-serif" font-size="10">Tickets and audit events</text>
+  <rect x="799" y="531" width="290" height="73" rx="8" fill="#203A52" stroke="#527C92"/>
+  <circle cx="824" cy="552" r="9" fill="#355D70"/><path d="M824 548v5l4 2" fill="none" stroke="#B7E8E0" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="844" y="554" fill="#DDF2F3" font-family="Arial, sans-serif" font-size="11" font-weight="700">Queued notifications</text>
+  <text x="813" y="579" fill="#A7C9D0" font-family="Arial, sans-serif" font-size="10">Approved webhook or email → Teams</text>
+  <text x="813" y="595" fill="#A7C9D0" font-family="Arial, sans-serif" font-size="10">Retry separately from ticket saves</text>
+</svg>

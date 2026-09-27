@@ -42,6 +42,14 @@ Here is a complete starter entry. Replace its text and paths with your own:
 4. Run `python scripts/build_portfolio.py` from the website folder. This checks that the detail page and images exist, then updates the static cards in `index.html`, `projects-data.js`, and the illustrated workflow slide in `assets/gallery/`.
 5. Preview with `python -m http.server 8000`, then open `http://localhost:8000/`. Check the new card, gallery arrows, image zoom, **See more**, and **Try demo** on both desktop and phone widths.
 
+The `stack` items become visible skill badges on the card and in the enlarged preview. Name only tools you actually used. To show public source code, add a `code_url` pointing to a path in your own GitHub repository, for example:
+
+```json
+"code_url": "https://github.com/KyleJBonachita/my-public-project"
+```
+
+The builder accepts only HTTPS links under `github.com/KyleJBonachita/`. A **View code** link then appears on the card and preview.
+
 ## Add more images to an existing project
 
 Save each image under `assets/`, then add another object to that project's `images` array. The gallery shows images in that order and appends the generated process map as the final slide. Update `alt` and `caption` to say what each image shows. Run `python scripts/build_portfolio.py` again.
