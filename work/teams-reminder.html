@@ -10,6 +10,7 @@
   <script src="../theme.js"></script>
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="../case-details.css">
   <script defer src="../site-config.js"></script>
   <script defer src="../site.js"></script>
 </head>
@@ -30,9 +31,10 @@
     </div></section>
     <section class="case-section"><div class="container">
       <figure class="case-media"><div class="case-flow" role="img" aria-label="Weekday 6 AM trigger, then an Adaptive Card reminder, then delivery in Microsoft Teams"><div class="case-flow-step"><small>01 / TRIGGER</small><strong>Weekdays at 6:00 AM</strong><p>The flow runs on a set weekday schedule.</p></div><div class="case-flow-step"><small>02 / MESSAGE</small><strong>Adaptive Card</strong><p>A structured reminder prompts daily work logging.</p></div><div class="case-flow-step"><small>03 / DELIVERY</small><strong>Microsoft Teams</strong><p>The reminder appears in Microsoft Teams.</p></div></div><figcaption>Process outline of the built reminder. It is a diagram, not a screenshot of an internal Teams space.</figcaption></figure>
-      <div class="case-detail"><h2>The task</h2><div><p>Give the tech team a consistent morning prompt to record daily work, delivered in the tool they already use for communication.</p></div></div>
+      <div class="case-detail"><h2>Why I built it</h2><div><p>Daily work logging can slip when a reminder depends on one person sending it. I wanted the tech team to receive the same prompt on workdays in Microsoft Teams, where the team already communicates, and to make the reminder easy to inspect when delivery needs attention.</p></div></div>
       <div class="case-detail"><h2>What I built</h2><div><ul><li>A Power Automate flow scheduled for 6:00 AM on weekdays.</li><li>An Adaptive Card reminder for daily tech-team work logging.</li><li>Delivery through Microsoft Teams.</li></ul></div></div>
-      <div class="case-detail"><h2>What this demonstrates</h2><div><p>This small workflow shows how a scheduled trigger, structured message, and team delivery can replace a manual reminder. The case study does not claim measured time savings or completed downstream reporting.</p></div></div>
+      <div class="case-detail" id="workflow"><h2>Operating procedure</h2><div><ol class="case-sop"><li><strong>Confirm the schedule and audience</strong><p>Check the weekday recurrence, 6:00 AM run time, Teams destination, and card wording before enabling the flow.</p></li><li><strong>Run a controlled test</strong><p>Trigger a test and verify that the Adaptive Card renders in the intended Teams space.</p></li><li><strong>Check delivery</strong><p>Review Power Automate run history for failures and confirm that the posted message is readable.</p></li><li><strong>Maintain the reminder</strong><p>Update the message or destination when the team process changes, then test again.</p></li></ol></div></div>
+      <div class="case-detail"><h2>Outcome and limits</h2><div><p>The built flow has a weekday trigger, an Adaptive Card, and a Teams delivery action. Those are the verified components shown in the process diagram. I have not measured time saved, logging compliance, or the effect on end-of-day reports, so this case study does not present a percentage improvement.</p></div></div>
       <div class="case-status"><strong>Current status:</strong> The scheduled reminder is built. A separate EOD collection workflow remains under development and is not part of this case study.</div>
     </div></section>
     <div class="container next-project"><span>NEXT PROJECT</span><a href="./device-custody.html">Device Custody Tracker ↗</a></div>

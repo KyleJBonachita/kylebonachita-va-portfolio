@@ -10,6 +10,7 @@
   <script src="../theme.js"></script>
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="../case-details.css">
   <style>
     .case-ecommerce .page-hero { padding-block: clamp(42px, 5.5vw, 76px) clamp(42px, 5vw, 65px); }
     .case-ecommerce .breadcrumb { margin-bottom: clamp(30px, 4vw, 48px); }
@@ -66,9 +67,9 @@
         <figcaption>Measured counts from the two supplied CSVs. The graphic contains no order records, shipping details, customer names, or prices.</figcaption>
       </figure>
 
-      <div class="case-detail"><h2>The processing problem</h2><div>
+      <div class="case-detail"><h2>Why I built this audit</h2><div>
         <p>The sales report is an <strong>order-line</strong> export. One Order ID can occur on several lines, so removing every repeated ID would discard valid items. The inventory file is a separate SKU list with no snapshot date, so it can show catalog coverage but cannot explain whether an order was fulfilled.</p>
-        <p>Missing amounts and zero quantities also need status context. In this sample, most occur on canceled lines. The useful review queue is the smaller set that remains after status is considered.</p>
+        <p>I built the audit to define the data grain first, then separate likely review candidates from fields that may be expected on canceled lines. This makes the result more useful than a blanket duplicate or missing-value count.</p>
       </div></div>
 
       <div class="case-detail"><h2>What I built</h2><div>
@@ -81,7 +82,9 @@
         </ul>
       </div></div>
 
-      <div class="case-detail"><h2>What the checks found</h2><div>
+      <div class="case-detail" id="workflow"><h2>Operating procedure</h2><div><ol class="case-sop"><li><strong>Confirm the source and grain</strong><p>Check required columns and treat each sales row as an order line. Do not delete a line merely because its Order ID repeats.</p></li><li><strong>Segment exceptions</strong><p>Count blank amounts and zero quantities by canceled versus other statuses, then inspect the non-canceled candidates in the private source.</p></li><li><strong>Compare identifiers carefully</strong><p>Check repeated Order ID and SKU combinations separately from otherwise identical rows. Match trimmed SKU codes against the undated inventory list.</p></li><li><strong>Publish a safe summary</strong><p>Review candidate rows locally and export only aggregate JSON. Keep order IDs, addresses, prices, and source CSVs private.</p></li></ol></div></div>
+
+      <div class="case-detail" id="results"><h2>What the checks found</h2><div>
         <div class="qa-breakdown">
           <div><strong>7,795</strong><span>lines have no amount; 7,566 are canceled, leaving 229 other lines for review.</span></div>
           <div><strong>12,807</strong><span>lines have zero quantity; 12,701 are canceled, leaving 106 other lines for review.</span></div>
@@ -89,6 +92,7 @@
           <div><strong>33</strong><span>lines lack at least one shipping-location field; the values themselves stay private.</span></div>
         </div>
         <p style="margin-top: 22px;">Another 8,597 lines share an Order ID with an earlier line. That is a grain check, not a duplicate count. Six rows are otherwise identical after excluding the generated index; those warrant review before any removal.</p>
+        <p>These are measured dataset findings, not a measured improvement in processing speed or error rate. The 229 amount candidates and 106 quantity candidates may overlap; they should not be added as a count of distinct orders.</p>
       </div></div>
 
       <div class="case-detail"><h2>How to inspect it</h2><div>

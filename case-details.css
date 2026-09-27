@@ -1,0 +1,101 @@
+.case-sop {
+  display: grid;
+  gap: 14px;
+  list-style: none;
+  counter-reset: case-step;
+}
+
+.case-example {
+  margin-top: 28px;
+  padding: 20px 24px;
+  color: var(--ink);
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 4px 10px 10px 4px;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.case-example > strong { display: block; margin-bottom: 7px; font-size: 14px; }
+.case-example p { margin: 0; color: var(--muted); }
+.case-example p strong { color: var(--ink); }
+
+.case-detail ol:not(.case-sop) {
+  display: grid;
+  gap: 14px;
+  padding: 0;
+  list-style: none;
+  counter-reset: plain-step;
+}
+.case-detail ol:not(.case-sop) li {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 13px;
+  counter-increment: plain-step;
+}
+.case-detail ol:not(.case-sop) li::before {
+  content: counter(plain-step, decimal-leading-zero);
+  color: var(--accent);
+  font: 700 11px/1.7 var(--mono);
+}
+
+.case-sop li {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 3px 13px;
+  padding: 0;
+  counter-increment: case-step;
+}
+
+.case-sop li::before {
+  content: counter(case-step, decimal-leading-zero);
+  grid-row: span 2;
+  padding-top: 2px;
+  color: var(--accent);
+  font: 700 11px/1.6 var(--mono);
+}
+
+.case-sop strong,
+.case-detail strong {
+  color: var(--ink);
+}
+
+.case-sop strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.case-sop p {
+  grid-column: 2;
+}
+
+.case-detail .case-inline-link {
+  display: inline-block;
+  margin-top: 17px;
+  border-bottom: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.case-detail .case-inline-link:hover {
+  color: var(--ink);
+}
+
+.lab-section > .container > .case-detail:first-child {
+  padding-top: 0;
+}
+
+.lab-section > .container > .case-detail + .lab-intro {
+  margin-top: 34px;
+}
+
+.lab-section > .container > .lab-card + .case-detail {
+  margin-top: 52px;
+}
+
+@media (max-width: 650px) {
+  .case-sop { gap: 18px; }
+}

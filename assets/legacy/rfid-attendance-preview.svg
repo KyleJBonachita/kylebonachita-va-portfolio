@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">RFID attendance management system preview</title>
+  <desc id="desc">A hardware-to-database workflow preview for an RFID attendance management system.</desc>
+  <rect width="960" height="540" fill="#1f2121"/>
+  <rect x="64" y="58" width="832" height="424" rx="18" fill="#fcfcf9"/>
+  <text x="102" y="112" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#13343b">RFID Attendance Management System</text>
+  <text x="102" y="144" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#626c71">Arduino + RFID + centralized attendance records</text>
+  <rect x="104" y="200" width="198" height="176" rx="16" fill="#e9f6f7" stroke="#21808d" stroke-width="3"/>
+  <rect x="136" y="236" width="134" height="88" rx="12" fill="#21808d"/>
+  <circle cx="166" cy="280" r="18" fill="#32b8c6"/>
+  <path d="M214 253 C240 279 240 309 214 335" fill="none" stroke="#fcfcf9" stroke-width="8" stroke-linecap="round"/>
+  <path d="M198 268 C212 282 212 306 198 320" fill="none" stroke="#fcfcf9" stroke-width="6" stroke-linecap="round"/>
+  <text x="138" y="352" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#13343b">RFID Reader</text>
+  <path d="M316 288 H422" stroke="#21808d" stroke-width="8" stroke-linecap="round"/>
+  <path d="M400 266 L426 288 L400 310" fill="none" stroke="#21808d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="446" y="198" width="180" height="180" rx="20" fill="#fff3e8" stroke="#a84b2f" stroke-width="3"/>
+  <rect x="494" y="242" width="84" height="92" rx="8" fill="#a84b2f"/>
+  <circle cx="536" cy="278" r="14" fill="#e68161"/>
+  <line x1="506" y1="314" x2="566" y2="314" stroke="#fcfcf9" stroke-width="8" stroke-linecap="round"/>
+  <text x="493" y="352" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#13343b">Arduino</text>
+  <path d="M642 288 H748" stroke="#21808d" stroke-width="8" stroke-linecap="round"/>
+  <path d="M726 266 L752 288 L726 310" fill="none" stroke="#21808d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="770" y="200" width="90" height="34" rx="17" fill="#21808d"/>
+  <rect x="770" y="222" width="90" height="116" fill="#21808d"/>
+  <ellipse cx="815" cy="338" rx="45" ry="17" fill="#1d7480"/>
+  <ellipse cx="815" cy="222" rx="45" ry="17" fill="#32b8c6"/>
+  <line x1="792" y1="262" x2="838" y2="262" stroke="#fcfcf9" stroke-width="5" stroke-linecap="round"/>
+  <line x1="792" y1="292" x2="838" y2="292" stroke="#fcfcf9" stroke-width="5" stroke-linecap="round"/>
+  <text x="772" y="382" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#13343b">Database</text>
+  <rect x="104" y="416" width="756" height="34" rx="8" fill="#f5f5f5"/>
+  <text x="126" y="439" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#626c71">Tap card → capture ID and timestamp → sync attendance record</text>
+</svg>

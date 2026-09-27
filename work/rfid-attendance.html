@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d141b">
+  <meta name="description" content="RFID Attendance System case study by Kyle Josef M. Bonachita: an Arduino and RFID prototype for timestamped attendance records.">
+  <title>RFID Attendance System | Kyle Josef M. Bonachita</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="../theme.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="../case-details.css">
+  <script defer src="../site-config.js"></script>
+  <script defer src="../site.js"></script>
+</head>
+<body data-page="case">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top"><div class="container nav-shell">
+    <a class="brand" href="../index.html" aria-label="Portfolio home"><strong data-owner-name>Kyle Josef M. Bonachita</strong><span>Technical VA</span></a>
+    <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="site-nav" id="primary-nav" aria-label="Main navigation"><a href="../index.html#work">Work</a><a href="../index.html#web-development">Web &amp; tools</a><a href="../index.html#about">About</a><a class="nav-contact" href="../index.html#contact">Contact <span aria-hidden="true">↗</span></a></nav>
+  </div></header>
+  <main id="main">
+    <section class="page-hero"><div class="container">
+      <a class="breadcrumb" href="../index.html#web-development">← Back to technical projects</a>
+      <p class="eyebrow">BUILT PROTOTYPE / HARDWARE + RECORDS</p>
+      <h1>RFID Attendance System</h1>
+      <p class="page-lead">An Arduino and RFID prototype that captures a card identifier and timestamp, then records the attendance event in a central database.</p>
+      <dl class="case-facts"><div><dt>ROLE</dt><dd>System development</dd></div><div><dt>FORMAT</dt><dd>Hardware and record workflow</dd></div><div><dt>TOOLS</dt><dd>Arduino, RFID, database</dd></div><div><dt>STATUS</dt><dd>Demonstrated prototype</dd></div></dl>
+    </div></section>
+    <section class="case-section"><div class="container">
+      <figure class="case-media"><img src="../assets/legacy/rfid-attendance-preview.svg" width="960" height="540" alt="Conceptual path from RFID card reader to Arduino and centralized attendance records"><figcaption>Conceptual workflow graphic from my earlier portfolio. It does not contain real card IDs or attendance records.</figcaption></figure>
+      <div class="case-detail"><h2>The problem</h2><div><p>Manual attendance entries can be slow to collect and difficult to consolidate. A reliable event record needs both an identified card and the time it was read.</p></div></div>
+      <div class="case-detail"><h2>What I built</h2><div><ul><li>An RFID reader and Arduino flow for reading a card identifier.</li><li>Timestamped attendance events stored in a central database.</li><li>A simple interface to support review of captured records.</li></ul></div></div>
+      <div class="case-detail"><h2>Operating procedure</h2><div><ol><li>Confirm the reader and database connection are ready before a session.</li><li>Present a registered card to the reader and confirm the capture response.</li><li>Review the recorded identifier and timestamp in the central record.</li><li>Investigate missing or repeated taps before using the log as an attendance report.</li></ol><p>This is a sensible deployment checklist. The earlier portfolio does not document the complete enrollment and exception-handling implementation.</p></div></div>
+      <div class="case-detail"><h2>How it helped</h2><div><p>The prototype replaced a handwritten event with a timestamped record that can be retrieved centrally. Its behavior was shown in a live demonstration, but this page does not claim a measured reduction in administrative time or a production deployment.</p></div></div>
+      <div class="case-status"><strong>Evidence and limits:</strong> The build and live demonstration are described in my earlier public portfolio. Hardware, database access, personal identifiers, and real attendance logs are not part of the website demo.</div>
+    </div></section>
+    <div class="container next-project"><span>BACK TO PROJECTS</span><a href="../index.html#work">Explore all work ↗</a></div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-year>2026</span> <span data-owner-name>Kyle Josef M. Bonachita</span></span><span>Automation · Web development · Data operations</span><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>

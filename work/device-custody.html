@@ -10,6 +10,7 @@
   <script src="../theme.js"></script>
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="../case-details.css">
   <script defer src="../site-config.js"></script>
   <script defer src="../site.js"></script>
 </head>
@@ -30,9 +31,11 @@
     </div></section>
     <section class="case-section"><div class="container">
       <figure class="case-media"><img src="../assets/device-flow.svg" width="1200" height="600" alt="Diagram showing individual devices checked out together, audited, then returned to inventory"><figcaption>Illustrative flow with fictional devices. Internal records and test links are excluded.</figcaption></figure>
-      <div class="case-detail"><h2>The problem</h2><div><p>Paper checkout and turnover logs make it harder to see each device’s current condition and custodian. A shift team needs a clear record of what went out, what came back, and which exceptions need attention.</p></div></div>
+      <div class="case-detail"><h2>Why I built it</h2><div><p>Paper checkout and turnover logs make it harder to see each device’s current condition and custodian. I built a shared record so a shift team can trace what went out, what came back, and which exceptions need attention without treating a temporary device pair as one permanent asset.</p></div></div>
       <div class="case-detail"><h2>What I built</h2><div><ul><li>Individual inventory records for each device, including status, classification, and condition.</li><li>A checkout and return flow that temporarily groups two phones under one borrower, then returns each to individual inventory.</li><li>QR verification, issue records, and end-of-shift audits in an append-only event history.</li><li>Administrator and viewer roles with server-side checks on changes.</li><li>Team-ready status summaries that can be copied into Microsoft Teams.</li></ul></div></div>
       <div class="case-detail"><h2>Why it works this way</h2><div><p><strong>Keep each device distinct.</strong> A temporary pair is useful during checkout, but each physical device remains its own inventory record.</p><p><strong>Record the handoff.</strong> Checkout, return, transfer, and issue events form a trail that a shift team can review.</p><p><strong>Design for the floor.</strong> The interface adapts to phones and desktops so a handoff can be checked where it happens.</p></div></div>
+      <div class="case-detail" id="workflow"><h2>Operating procedure</h2><div><ol class="case-sop"><li><strong>Register and identify devices</strong><p>Keep one inventory record per physical device and confirm its ID, status, and condition.</p></li><li><strong>Verify a checkout</strong><p>Use the QR or record lookup, record the borrower, and create the checkout event. If two phones move together, group them only for that handoff.</p></li><li><strong>Record the return or issue</strong><p>Check each device separately, update its condition, and log any exception rather than overwriting the prior event.</p></li><li><strong>Close the shift</strong><p>Review the audit view and event history, then send a status summary to the team if needed.</p></li></ol></div></div>
+      <div class="case-detail"><h2>Outcome and limits</h2><div><p>The current build supports individual inventory records, temporary paired checkout, role checks, and an append-only handoff history. It is in an editor test deployment. A reduction in lost devices, handoff time, or audit errors has not been measured, so no percentage is claimed.</p></div></div>
       <div class="case-status"><strong>Current status:</strong> The current version is in an editor test deployment. This case study shows its design and build; it does not claim the latest version is publicly deployed or report production metrics.</div>
     </div></section>
     <div class="container next-project"><span>NEXT PROJECT</span><a href="../lab/data-cleanup.html">Data Quality Lab ↗</a></div>

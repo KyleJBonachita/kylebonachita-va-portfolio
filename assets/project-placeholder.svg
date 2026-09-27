@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Project image placeholder</title>
+  <desc id="desc">Neutral preview for a future project screenshot.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#19303b"/><stop offset="1" stop-color="#102029"/></linearGradient></defs>
+  <rect width="1200" height="720" fill="url(#bg)"/>
+  <path d="M0 640C180 580 345 664 520 606s359-144 680-67v181H0Z" fill="#4b8e94" opacity=".13"/>
+  <rect x="88" y="90" width="1024" height="540" rx="18" fill="#1b3641" stroke="#648d96" stroke-width="2"/>
+  <rect x="88" y="90" width="1024" height="56" rx="18" fill="#274753"/>
+  <circle cx="125" cy="118" r="8" fill="#9ed7cd"/><circle cx="153" cy="118" r="8" fill="#6cabb5"/><circle cx="181" cy="118" r="8" fill="#4d8290"/>
+  <rect x="141" y="208" width="918" height="320" rx="13" fill="#10242d" stroke="#3b6971" stroke-dasharray="9 9"/>
+  <path d="M552 363l42-42 43 43 58-73 91 116H414l84-97 54 53Z" fill="none" stroke="#77b6af" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="503" cy="292" r="28" fill="none" stroke="#77b6af" stroke-width="12"/>
+  <text x="600" y="470" text-anchor="middle" fill="#d8efeb" font-family="Arial,sans-serif" font-size="30" font-weight="700">Project preview</text>
+  <text x="600" y="508" text-anchor="middle" fill="#9ac3c2" font-family="Arial,sans-serif" font-size="17">Replace with a safe screenshot or illustration</text>
+</svg>

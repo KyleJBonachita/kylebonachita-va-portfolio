@@ -10,6 +10,7 @@
   <script src="../theme.js"></script>
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="../case-details.css">
   <script defer src="../site-config.js"></script>
   <script defer src="../site.js"></script>
 </head>
@@ -30,9 +31,11 @@
     </div></section>
     <section class="case-section"><div class="container">
       <figure class="case-media"><img src="../assets/appscripter-dashboard.png" width="1440" height="1000" alt="Appscripter dashboard explaining source-only access and showing the start of its export form"><figcaption>Local dashboard shown with placeholders. Linked Sheets and Drive files are outside the source download.</figcaption></figure>
-      <div class="case-detail"><h2>The problem</h2><div><p>Apps Script can contain important automation logic. Exporting it for backup or sharing still needs care: source files can include identifiers and references that should be reviewed before anything is published.</p></div></div>
+      <div class="case-detail"><h2>Why I built it</h2><div><p>Apps Script can contain important automation logic, but a manual source export is easy to postpone or handle inconsistently. Sharing it also needs care: source files can include identifiers and references that should be reviewed before anything is published. I built one repeatable path for preserving source privately and preparing a separate copy for review.</p></div></div>
       <div class="case-detail"><h2>What I built</h2><div><ul><li>A dashboard and command-line flow for downloading Apps Script source through clasp.</li><li>One path for exact private backups and another for best-effort redacted, shareable copies.</li><li>Static checks and synthetic fixtures to review the source without opening linked business data.</li><li>A human review step before optional GitHub repository creation or push.</li></ul></div></div>
       <div class="case-detail"><h2>Why it works this way</h2><div><p><strong>Limit access.</strong> The export targets script source files and does not follow links to spreadsheets or Drive data.</p><p><strong>Keep the choices visible.</strong> Private backups and shareable copies have different rules, so the tool makes the mode explicit.</p><p><strong>Review before publishing.</strong> The user inspects the result before any optional GitHub action.</p></div></div>
+      <div class="case-detail" id="workflow"><h2>Operating procedure</h2><div><ol class="case-sop"><li><strong>Select a script and backup mode</strong><p>Choose an exact private backup or a separate best-effort shareable copy before exporting.</p></li><li><strong>Export source with clasp</strong><p>Download the Apps Script project files without following links to connected Sheets or Drive content.</p></li><li><strong>Run checks and inspect the files</strong><p>Review static warnings and any redaction output. Treat a clean check as a prompt for human inspection, not proof that the files are safe to publish.</p></li><li><strong>Store or publish deliberately</strong><p>Keep exact backups private. Create or push a shareable Git repository only after inspecting the final copy.</p></li></ol></div></div>
+      <div class="case-detail"><h2>Outcome and limits</h2><div><p>The built dashboard and CLI provide both backup paths and a review step. The case study demonstrates the workflow and safeguards; it has no measured before-and-after time study or client deployment claim. Redaction is best effort, so a person still decides whether a copy can be shared.</p></div></div>
       <div class="case-status"><strong>Current status:</strong> Built local tool. This case study shows the product and its design decisions; it does not claim a client deployment or measured time savings.</div>
     </div></section>
     <div class="container next-project"><span>NEXT PROJECT</span><a href="./teams-reminder.html">Morning Tech Team reminder ↗</a></div>

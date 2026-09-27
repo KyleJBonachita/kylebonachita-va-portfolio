@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">OC-SVM anomaly detection dashboard preview</title>
+  <desc id="desc">A dashboard-style preview showing anomaly points, model accuracy, and feature scaling for credit card fraud detection.</desc>
+  <rect width="960" height="540" fill="#13343b"/>
+  <rect x="58" y="54" width="844" height="432" rx="16" fill="#fcfcf9"/>
+  <rect x="86" y="86" width="808" height="58" rx="10" fill="#21808d"/>
+  <text x="116" y="123" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#fcfcf9">OC-SVM Credit Card Anomaly Detection</text>
+  <rect x="86" y="174" width="260" height="92" rx="12" fill="#e9f6f7"/>
+  <text x="112" y="212" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#626c71">Model Evaluation</text>
+  <text x="112" y="250" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="700" fill="#21808d">Review</text>
+  <rect x="374" y="174" width="230" height="92" rx="12" fill="#fff3e8"/>
+  <text x="398" y="212" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#626c71">Tuning</text>
+  <text x="398" y="248" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#a84b2f">Grid Search</text>
+  <rect x="632" y="174" width="262" height="92" rx="12" fill="#eef8ef"/>
+  <text x="656" y="212" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#626c71">Pipeline</text>
+  <text x="656" y="248" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#1d7480">Scaled Features</text>
+  <rect x="86" y="302" width="808" height="148" rx="12" fill="#f5f5f5"/>
+  <path d="M118 410 C214 344 300 430 388 374 S554 292 650 346 796 408 862 338" fill="none" stroke="#21808d" stroke-width="7" stroke-linecap="round"/>
+  <g fill="#32b8c6">
+    <circle cx="146" cy="393" r="8"/>
+    <circle cx="238" cy="365" r="8"/>
+    <circle cx="336" cy="408" r="8"/>
+    <circle cx="452" cy="344" r="8"/>
+    <circle cx="566" cy="311" r="8"/>
+    <circle cx="694" cy="366" r="8"/>
+    <circle cx="808" cy="389" r="8"/>
+  </g>
+  <g fill="#c0152f">
+    <circle cx="272" cy="422" r="11"/>
+    <circle cx="516" cy="418" r="11"/>
+    <circle cx="742" cy="318" r="11"/>
+  </g>
+  <text x="116" y="336" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600" fill="#13343b">Normal transactions vs anomaly signals</text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title description">
+  <title id="title">Morning Tech Team reminder preview</title>
+  <desc id="description">Illustrative Power Automate to Teams reminder card, with no private channel data.</desc>
+  <defs>
+    <linearGradient id="background" x2="1" y2="1"><stop stop-color="#183253"/><stop offset="1" stop-color="#0d1a30"/></linearGradient>
+    <linearGradient id="card" x2="1" y2="1"><stop stop-color="#263e70"/><stop offset="1" stop-color="#182b50"/></linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#background)"/>
+  <circle cx="1050" cy="110" r="205" fill="#477de8" opacity=".12"/>
+  <path d="M0 555C240 500 333 656 615 585s373-126 585-50v185H0Z" fill="#3965b5" opacity=".13"/>
+  <text x="76" y="91" fill="#9ebdff" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="3">WORKFLOW / ILLUSTRATIVE PREVIEW</text>
+  <rect x="76" y="151" width="270" height="407" rx="22" fill="#132744" stroke="#5b83bf" stroke-width="2"/>
+  <text x="108" y="207" fill="#cfe0ff" font-family="Arial,sans-serif" font-size="17" font-weight="700">SCHEDULE</text>
+  <text x="108" y="307" fill="#fff" font-family="Arial,sans-serif" font-size="70" font-weight="700">06:00</text>
+  <text x="108" y="342" fill="#b9cdeb" font-family="Arial,sans-serif" font-size="20">Weekday mornings</text>
+  <rect x="108" y="419" width="205" height="49" rx="24" fill="#5079d4"/>
+  <text x="138" y="450" fill="#fff" font-family="Arial,sans-serif" font-size="18" font-weight="700">Power Automate</text>
+  <path d="M365 352h104" stroke="#9ab7ee" stroke-width="4" stroke-linecap="round"/>
+  <path d="m448 333 24 19-24 19" fill="none" stroke="#9ab7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="488" y="151" width="636" height="407" rx="22" fill="url(#card)" stroke="#7897d2" stroke-width="2"/>
+  <rect x="488" y="151" width="13" height="407" rx="6" fill="#91b1ff"/>
+  <text x="534" y="210" fill="#bfd4ff" font-family="Arial,sans-serif" font-size="18" font-weight="700">MICROSOFT TEAMS / ADAPTIVE CARD</text>
+  <text x="534" y="295" fill="#fff" font-family="Arial,sans-serif" font-size="37" font-weight="700">Morning Tech Team</text>
+  <text x="534" y="348" fill="#e1eafa" font-family="Arial,sans-serif" font-size="23">Please log today's work.</text>
+  <rect x="534" y="394" width="542" height="92" rx="10" fill="#122748" stroke="#6d8cbe"/>
+  <text x="555" y="429" fill="#e6edfa" font-family="Arial,sans-serif" font-size="19">Open the daily work log</text>
+  <text x="555" y="459" fill="#adc7f8" font-family="Arial,sans-serif" font-size="15">Illustrative card content</text>
+  <text x="77" y="639" fill="#adc0dd" font-family="Arial,sans-serif" font-size="16">Scheduled prompt  →  Teams delivery  →  Run-history check</text>
+</svg>

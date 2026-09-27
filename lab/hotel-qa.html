@@ -10,6 +10,7 @@
   <script src="../theme.js"></script>
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="../case-details.css">
   <link rel="stylesheet" href="./hotel-qa.css">
   <script defer src="../site-config.js"></script>
   <script defer src="../site.js"></script>
@@ -39,6 +40,7 @@
         <div class="hq-kpi"><span>Passed these checks</span><strong data-metric="passes_checked_rules">36,160</strong><small>No issue found by these rules</small></div>
       </div>
       <div class="hq-reconcile"><div><span class="hq-reconcile-label">RECONCILIATION</span><p><strong data-metric="passes_checked_rules">36,160</strong> passed + <strong data-metric="review">115</strong> review = <strong data-metric="rows">36,275</strong> source rows</p></div><span class="hq-reconcile-check" aria-label="Counts reconcile">✓</span></div>
+      <div class="case-detail"><h2>Why I built this check</h2><div><p>An impossible arrival date or a booking with no nights cannot be interpreted reliably without a human decision. I built a repeatable validation pass to isolate those cases and prove that every source row is accounted for. The 115 flagged rows are 0.32% of this file; that is a review rate for two rules, not an improvement percentage.</p></div></div>
     </div></section>
 
     <section class="hq-section hq-section-tinted" aria-labelledby="hq-process-title"><div class="container">
@@ -46,9 +48,10 @@
       <ol class="hq-flow"><li><span>01</span><strong>Read source</strong><p>Check required columns and stream each booking row.</p></li><li><span>02</span><strong>Apply rules</strong><p>Validate the calendar date and total nights.</p></li><li><span>03</span><strong>Queue exceptions</strong><p>Count each reason and any overlap.</p></li><li><span>04</span><strong>Reconcile</strong><p>Confirm passed plus review equals all rows.</p></li></ol>
       <div class="hq-rules"><article><span class="hq-rule-index">RULE 01</span><h3>Invalid arrival date</h3><p>Build a real calendar date from year, month, and day. A date such as February 29, 2018 fails because 2018 was not a leap year.</p><div class="hq-rule-count"><strong data-metric="invalid_arrival_date">37</strong><span>rows flagged</span></div></article><article><span class="hq-rule-index">RULE 02</span><h3>Zero-night stay</h3><p>Add weekend and weekday nights. A reservation with zero of both enters review because it has no booked stay length.</p><div class="hq-rule-count"><strong data-metric="zero_night_stay">78</strong><span>rows flagged</span></div></article></div>
       <p class="hq-method-note">No rows triggered both findings in this dataset. The script also guards against missing, non-numeric, or negative night counts; none appeared in this source.</p>
+      <div class="case-detail" id="workflow"><h2>Operating procedure</h2><div><ol class="case-sop"><li><strong>Check the input</strong><p>Confirm the required date and night columns before running the local Python script.</p></li><li><strong>Run and reconcile</strong><p>Review the aggregate JSON; rows that pass these rules plus rows for review must equal source rows.</p></li><li><strong>Handle exceptions privately</strong><p>If row-level follow-up is needed, create the optional local review CSV outside the site. Investigate flagged records against the source before deciding whether to correct them.</p></li><li><strong>Record the decision and rerun</strong><p>For a real processing task, document each approved correction, rerun the checks, and preserve the before-and-after counts.</p></li></ol><a class="case-inline-link" href="#demo">Try the synthetic review queue ↗</a></div></div>
     </div></section>
 
-    <section class="hq-section" aria-labelledby="hq-demo-title"><div class="container">
+    <section class="hq-section" id="demo" aria-labelledby="hq-demo-title"><div class="container">
       <div class="hq-section-heading"><div><p class="eyebrow">03 / INTERACTIVE DEMO</p><h2 id="hq-demo-title">Try the review queue.</h2></div><p>These are invented examples, not reservations from the source file. Choose a view to see which rows a data processor would investigate.</p></div>
       <div class="hq-demo">
         <div class="hq-demo-top"><div><strong>SYNTHETIC EXAMPLES</strong><span>3 sample rows · no customer data</span></div><div class="hq-filter" role="group" aria-label="Filter synthetic example rows"><button type="button" data-hq-filter="all" aria-pressed="true">All rows <span>3</span></button><button type="button" data-hq-filter="review" aria-pressed="false">Needs review <span>2</span></button><button type="button" data-hq-filter="pass" aria-pressed="false">Passed <span>1</span></button></div></div>

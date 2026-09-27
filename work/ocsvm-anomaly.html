@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d141b">
+  <meta name="description" content="OC-SVM Anomaly Detection case study by Kyle Josef M. Bonachita: preprocessing, feature scaling, and parameter search for credit card transaction anomalies.">
+  <title>OC-SVM Anomaly Detection | Kyle Josef M. Bonachita</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="../theme.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="../case-details.css">
+  <script defer src="../site-config.js"></script>
+  <script defer src="../site.js"></script>
+</head>
+<body data-page="case">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top"><div class="container nav-shell">
+    <a class="brand" href="../index.html" aria-label="Portfolio home"><strong data-owner-name>Kyle Josef M. Bonachita</strong><span>Technical VA</span></a>
+    <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="site-nav" id="primary-nav" aria-label="Main navigation"><a href="../index.html#work">Work</a><a href="../index.html#data-operations">Data operations</a><a href="../index.html#about">About</a><a class="nav-contact" href="../index.html#contact">Contact <span aria-hidden="true">↗</span></a></nav>
+  </div></header>
+  <main id="main">
+    <section class="page-hero"><div class="container">
+      <a class="breadcrumb" href="../index.html#data-operations">← Back to data projects</a>
+      <p class="eyebrow">RESEARCH PROJECT / DATA ANALYSIS</p>
+      <h1>OC-SVM Anomaly Detection</h1>
+      <p class="page-lead">A credit card transaction research project using data preparation, scaling, and parameter search to identify unusual records.</p>
+      <dl class="case-facts"><div><dt>ROLE</dt><dd>Machine learning research</dd></div><div><dt>FORMAT</dt><dd>Model evaluation</dd></div><div><dt>TOOLS</dt><dd>Python, scikit-learn, One-Class SVM, Grid Search</dd></div><div><dt>STATUS</dt><dd>Earlier research project; no customer records shown</dd></div></dl>
+    </div></section>
+    <section class="case-section"><div class="container">
+      <figure class="case-media"><img src="../assets/legacy/ocsvm-anomaly-preview.svg" width="960" height="540" alt="Conceptual anomaly-detection dashboard with model tuning and transaction signal graphics"><figcaption>Adapted conceptual graphic from my earlier portfolio. It shows the analysis workflow, not a verified model score or live dashboard.</figcaption></figure>
+      <div class="case-detail"><h2>The problem</h2><div><p>Rare or unusual transactions are difficult to review one by one. A model can help prioritize cases, but a sensitive anomaly detector may change substantially when features or model parameters change.</p></div></div>
+      <div class="case-detail"><h2>What I worked on</h2><div><ul><li>Prepared transaction features for model input and selected the features used for analysis.</li><li>Scaled the features before fitting a One-Class SVM.</li><li>Used Grid Search to compare parameter settings and presented the evaluation with statistical summaries and visualizations.</li></ul></div></div>
+      <div class="case-detail"><h2>Review procedure</h2><div><ol><li>Record the dataset version, permitted fields, and quality checks before modeling.</li><li>Keep evaluation data separate while fitting preprocessing and candidate models.</li><li>Compare parameter settings on the evaluation data and inspect both missed anomalies and false alerts.</li><li>Document the chosen settings and rerun the same checks when the data changes.</li></ol><p>This is a practical repeat-run checklist; the original portfolio does not document every evaluation detail needed to audit the earlier model result.</p></div></div>
+      <div class="case-detail"><h2>How it helps data operations</h2><div><p>The project demonstrates preparation, tuning, and review of data signals rather than manually scanning every row. A flagged transaction is a lead for investigation, not a final fraud decision.</p></div></div>
+      <div class="case-status"><strong>Evidence and limits:</strong> The project is described in my earlier portfolio. The dataset split, class balance, confusion matrix, and operating threshold are not documented here, so this page does not present a performance percentage as a validated result.</div>
+    </div></section>
+    <div class="container next-project"><span>NEXT PROJECT</span><a href="./rfid-attendance.html">RFID Attendance System ↗</a></div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-year>2026</span> <span data-owner-name>Kyle Josef M. Bonachita</span></span><span>Automation · Web development · Data operations</span><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>

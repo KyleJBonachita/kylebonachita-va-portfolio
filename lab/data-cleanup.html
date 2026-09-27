@@ -10,6 +10,7 @@
   <script src="../theme.js"></script>
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="../case-details.css">
   <script defer src="../site-config.js"></script>
   <script defer src="../site.js"></script>
   <script defer src="./data-cleanup.js"></script>
@@ -30,14 +31,17 @@
       <dl class="case-facts"><div><dt>ROLE</dt><dd>Demo design and implementation</dd></div><div><dt>FORMAT</dt><dd>Interactive, browser-only tool</dd></div><div><dt>TOOLS</dt><dd>JavaScript, HTML, CSS, CSV</dd></div><div><dt>STATUS</dt><dd>Portfolio demo with fictional data</dd></div></dl>
     </div></section>
     <section class="lab-section"><div class="container">
+      <div class="case-detail"><h2>Why I built it</h2><div><p>Inventory lists are easier to use when IDs, quantities, and locations follow the same rules. A quick cleanup can still hide bad rows if it only changes formatting, so I built this browser exercise to keep normalized values and review flags together before export.</p></div></div>
+      <div class="case-detail" id="workflow"><h2>Operating procedure</h2><div><ol class="case-sop"><li><strong>Load the records</strong><p>Use the fictional sample or paste a CSV with the four required headers.</p></li><li><strong>Run the checks</strong><p>Normalize SKU case and spacing, then check required fields, numeric quantities, and repeated SKUs.</p></li><li><strong>Review exceptions</strong><p>Read the row flags, correct the input where appropriate, and run the checks again. A flagged row is not silently deleted.</p></li><li><strong>Export the reviewed result</strong><p>Download the CSV with status information so the next person can see what still needs attention.</p></li></ol><a class="case-inline-link" href="#demo">Jump to the live browser demo ↗</a></div></div>
       <p class="lab-intro">Run the sample below, or paste a four-column CSV with the header <strong>sku,item,quantity,location</strong>. The tool normalizes SKUs and spacing, checks quantities and required fields, and flags repeated SKUs. Your input stays in this browser.</p>
-      <div class="lab-card">
+      <div class="lab-card" id="demo">
         <div class="lab-card-head"><span>INVENTORY DATA REVIEW</span><span>LOCAL DEMO · NO UPLOAD</span></div>
         <div class="lab-card-grid">
           <div class="lab-input-panel"><h2>Source records</h2><p>Edit the fictional sample or paste your own CSV.</p><label class="lab-label" for="csv-input">CSV input</label><textarea class="lab-textarea" id="csv-input" spellcheck="false" aria-describedby="csv-help"></textarea><p id="csv-help" class="lab-privacy">Expected headers: sku, item, quantity, location. Quoted CSV fields are supported. Values resembling spreadsheet formulas are exported as text.</p><div class="lab-actions"><button class="button button-primary" type="button" id="run-cleanup">Run cleanup <span aria-hidden="true">↗</span></button><button class="button button-outline" type="button" id="load-sample">Load sample</button><button class="button button-outline" type="button" id="clear-input">Clear</button></div></div>
           <div class="lab-output-panel"><h2>Review results</h2><p>Review flags stay visible alongside normalized records.</p><div class="lab-stats" aria-label="Cleanup summary"><div><small>ROWS</small><strong id="stat-rows">0</strong></div><div><small>READY</small><strong id="stat-ready">0</strong></div><div><small>REVIEW</small><strong id="stat-review">0</strong></div></div><div class="lab-message" id="lab-message" role="status" aria-live="polite">Run the sample to see normalized records and review flags.</div><div class="table-wrap"><table class="lab-table"><thead><tr><th scope="col">SKU</th><th scope="col">ITEM</th><th scope="col">QTY</th><th scope="col">LOCATION</th><th scope="col">STATUS</th></tr></thead><tbody id="result-body"><tr><td colspan="5">No results yet.</td></tr></tbody></table></div><ul class="lab-issues" id="issue-list" aria-label="Issues found"></ul><button class="button button-outline lab-download" type="button" id="download-csv" disabled>Download reviewed CSV ↓</button></div>
         </div>
       </div>
+      <div class="case-detail"><h2>Verified demo result</h2><div><p>The included seven-row fictional sample produces two ready rows and five rows for review. This demonstrates that the tool separates formatting changes from data decisions; it is a test of the demo, not a reduction in errors for a real inventory operation. No client improvement percentage is claimed.</p></div></div>
       <div class="case-status"><strong>About this demo:</strong> It uses fictional records to demonstrate parsing, normalization, validation, review flags, and CSV export. It does not process production data or claim a client outcome.</div>
     </div></section>
     <div class="container next-project"><span>MORE WORK</span><a href="../index.html#work">Return to projects ↗</a></div>
