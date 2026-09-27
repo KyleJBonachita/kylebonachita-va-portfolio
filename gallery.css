@@ -99,6 +99,12 @@ html[data-theme="light"] .project-zoom-dialog[data-category="data-operations"] {
 .project-gallery-image-button:not(:disabled):hover { border-color: var(--dialog-accent); }
 .project-gallery-image-button:disabled { cursor: default; }
 .project-gallery-image { display: block; width: 100%; height: 100%; object-fit: contain; }
+.project-dialog-media.is-transitioning .project-gallery-image,
+.project-dialog-media.is-transitioning .project-gallery-caption { animation: project-slide-enter .38s ease-out both; }
+@keyframes project-slide-enter {
+  from { opacity: .48; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 .project-image-hint {
   position: absolute;
   right: 11px;
@@ -121,9 +127,22 @@ html[data-theme="light"] .project-zoom-dialog[data-category="data-operations"] {
   color: var(--muted);
   font-size: 13px;
 }
-.project-gallery-controls { display: flex; align-items: center; justify-content: center; gap: 13px; margin-top: 12px; }
+.project-gallery-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
 .project-gallery-count,
-.project-zoom-count { min-width: 78px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 750; font-variant-numeric: tabular-nums; }
+.project-zoom-count { min-width: 60px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 750; font-variant-numeric: tabular-nums; }
+.project-gallery-autoplay {
+  min-height: 34px;
+  padding: 6px 10px;
+  color: var(--ink);
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font: 750 11px/1.2 var(--font);
+  cursor: pointer;
+}
+.project-gallery-autoplay:hover,
+.project-gallery-autoplay:focus-visible { border-color: var(--dialog-accent); }
+.project-gallery-autoplay[hidden] { display: none; }
 .project-gallery-caption { min-height: 3em; margin: 10px 4px 0; color: var(--muted); font-size: 12px; line-height: 1.5; text-align: center; }
 .project-dialog-copy { min-width: 0; padding: 1px 0 4px; }
 .project-dialog-meta { margin: 0 0 9px; color: var(--dialog-accent); font-size: 11px; font-weight: 800; letter-spacing: .03em; }
@@ -205,6 +224,8 @@ html[data-theme="light"] .project-zoom-dialog[data-category="data-operations"] {
 }
 @media (prefers-reduced-motion: reduce) {
   .project-dialog[open], .project-zoom-dialog[open] { animation: none; }
+  .project-dialog-media.is-transitioning .project-gallery-image,
+  .project-dialog-media.is-transitioning .project-gallery-caption { animation: none; }
   .project-icon-button, .project-dialog-action { transition: none; }
   .project-icon-button:hover:not(:disabled), .project-dialog-action:hover:not(:disabled) { transform: none; }
 }

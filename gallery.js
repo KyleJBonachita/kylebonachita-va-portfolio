@@ -21,9 +21,18 @@
     };
     const allowedUrl = (value) => {
       if (typeof value !== "string" || !value.trim()) return "";
+      const path = value.trim();
+      // Local previews can be opened directly from index.html. Permit only paths
+      // inside this site, never a file: URL or a path that climbs out of it.
+      if (/[\u0000-\u001f\u007f\\]/.test(path) || path.startsWith("//")) return "";
       try {
-        const resolved = new URL(value, document.baseURI);
-        return ["http:", "https:", "mailto:"].includes(resolved.protocol) ? value : "";
+        const resolved = new URL(path, document.baseURI);
+        if (["http:", "https:"].includes(resolved.protocol)) return path;
+        if (resolved.protocol === "mailto:" && /^mailto:/i.test(path)) return path;
+        if (resolved.protocol === "file:" && document.baseURI.startsWith("file:")
+          && !/^(?:[a-z][a-z\d+.-]*:|\/)/i.test(path)
+          && resolved.href.startsWith(new URL(".", document.baseURI).href)) return path;
+        return "";
       } catch {
         return "";
       }
@@ -53,7 +62,8 @@
     const count = element("span", "project-gallery-count", "1 / 1");
     count.setAttribute("aria-live", "polite");
     const next = button("project-icon-button project-gallery-next", "Next project image", "→");
-    mediaControls.append(previous, count, next);
+    const autoplayToggle = button("project-gallery-autoplay", "Pause automatic slideshow", "Pause slides");
+    mediaControls.append(previous, count, next, autoplayToggle);
     const caption = element("figcaption", "project-gallery-caption");
     media.append(imageButton, mediaControls, caption);
 
@@ -68,7 +78,7 @@
     const outcome = element("p", "project-dialog-outcome");
     const stack = element("ul", "project-dialog-stack");
     const actions = element("div", "project-dialog-actions");
-    const seeMore = element("a", "project-dialog-action project-dialog-action-primary", "See more");
+    const seeMore = element("a", "project-dialog-action project-dialog-action-primary", "See more · full case study");
     const tryDemo = element("a", "project-dialog-action project-dialog-action-secondary", "Try demo");
     const demoUnavailable = button("project-dialog-action project-dialog-action-secondary", "Demo is not publicly available", "Try demo");
     demoUnavailable.disabled = true;
@@ -110,6 +120,39 @@
     let slides = [];
     let index = 0;
     let returnFocus = null;
+    let autoplayTimer = null;
+    let autoplayPaused = false;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const autoplayDelay = 3000;
+
+    function stopAutoplay() {
+      if (autoplayTimer !== null) window.clearTimeout(autoplayTimer);
+      autoplayTimer = null;
+    }
+
+    function updateAutoplay() {
+      stopAutoplay();
+      autoplayToggle.hidden = slides.length < 2 || reducedMotion.matches;
+      autoplayToggle.textContent = autoplayPaused ? "Play slides" : "Pause slides";
+      autoplayToggle.setAttribute("aria-label", autoplayPaused ? "Play automatic slideshow" : "Pause automatic slideshow");
+      const hoveringGallery = media.matches(":hover") && !autoplayToggle.matches(":hover");
+      const focusingGallery = media.contains(document.activeElement) && document.activeElement !== autoplayToggle;
+      if (!dialog.open || zoom.open || slides.length < 2 || autoplayPaused || reducedMotion.matches
+        || document.hidden || hoveringGallery || focusingGallery) return;
+      autoplayTimer = window.setTimeout(() => move(1, true), autoplayDelay);
+    }
+
+    autoplayToggle.addEventListener("click", () => {
+      autoplayPaused = !autoplayPaused;
+      updateAutoplay();
+    });
+    media.addEventListener("mouseenter", updateAutoplay);
+    media.addEventListener("mouseleave", updateAutoplay);
+    media.addEventListener("pointermove", updateAutoplay);
+    media.addEventListener("focusin", updateAutoplay);
+    media.addEventListener("focusout", () => queueMicrotask(updateAutoplay));
+    document.addEventListener("visibilitychange", updateAutoplay);
+    reducedMotion.addEventListener("change", updateAutoplay);
 
     function renderSlide() {
       const slide = slides[index];
@@ -134,16 +177,25 @@
       imageButton.disabled = !available;
       const hasMany = slides.length > 1;
       for (const control of [previous, next, zoomPrev, zoomNext]) control.disabled = !hasMany;
+      autoplayToggle.hidden = !hasMany || reducedMotion.matches;
       count.textContent = available ? `${index + 1} / ${slides.length}` : "No images";
       zoomCount.textContent = count.textContent;
       zoomTitle.textContent = available ? `${project.title} · image ${index + 1}` : project.title;
     }
 
-    function move(delta) {
+    function move(delta, automatic = false) {
       if (slides.length < 2) return;
       index = (index + delta + slides.length) % slides.length;
+      count.setAttribute("aria-live", automatic ? "off" : "polite");
       renderSlide();
+      if (!reducedMotion.matches) {
+        media.classList.remove("is-transitioning");
+        // Restart the short entrance animation on each slide change.
+        void image.offsetWidth;
+        media.classList.add("is-transitioning");
+      }
       zoomViewport.scrollTo(0, 0);
+      updateAutoplay();
     }
     previous.addEventListener("click", () => move(-1));
     next.addEventListener("click", () => move(1));
@@ -156,6 +208,7 @@
       actualSize.textContent = "Actual size";
       actualSize.setAttribute("aria-label", "View image at actual size");
       zoom.showModal();
+      updateAutoplay();
       zoomClose.focus();
     }
     imageButton.addEventListener("click", openZoom);
@@ -168,8 +221,11 @@
     });
     zoom.addEventListener("close", () => {
       if (dialog.open) imageButton.focus();
+      updateAutoplay();
     });
     dialog.addEventListener("close", () => {
+      stopAutoplay();
+      media.classList.remove("is-transitioning");
       if (zoom.open) zoom.close();
       if (returnFocus && returnFocus.isConnected) returnFocus.focus({ preventScroll: true });
       project = null;
@@ -193,6 +249,7 @@
       project = entry;
       slides = slidesFor(entry);
       index = 0;
+      autoplayPaused = false;
       returnFocus = trigger || document.activeElement;
       dialog.dataset.category = entry.category || "";
       zoom.dataset.category = entry.category || "";
@@ -237,6 +294,7 @@
       renderSlide();
       dialog.showModal();
       close.focus();
+      updateAutoplay();
     }
 
     for (const card of document.querySelectorAll(".chapter-project[data-project-id]")) {

@@ -1,0 +1,112 @@
+/* A concise client-facing profile, separate from the project gallery. */
+.about-section {
+  padding-block: clamp(58px, 6.2vw, 88px);
+  background: var(--soft);
+}
+.about-shell { display: grid; gap: clamp(30px, 3.6vw, 46px); }
+.about-intro {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(30px, 5vw, 80px);
+  align-items: start;
+}
+.about-intro .eyebrow { margin-bottom: 18px; }
+.about-intro h2 {
+  max-width: 560px;
+  color: var(--ink);
+  font: 400 clamp(42px, 5.2vw, 70px)/1.04 var(--display);
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+.about-promise {
+  max-width: 440px;
+  margin-top: 19px;
+  color: var(--accent);
+  font: 500 clamp(18px, 1.7vw, 22px)/1.45 var(--display);
+}
+.about-story { padding-top: 2px; }
+.about-story > p:not(.about-role) {
+  max-width: 610px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.about-story > p + p { margin-top: 14px; }
+.about-story strong { color: var(--ink); font-weight: 700; }
+.about-story .about-role {
+  max-width: 610px;
+  margin-top: 20px;
+  padding: 12px 15px;
+  border-left: 3px solid var(--accent);
+  color: var(--ink);
+  background: color-mix(in srgb, var(--white) 72%, transparent);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.55;
+}
+.about-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 20px;
+  margin-top: 13px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.about-credentials span + span::before { content: "·"; margin-right: 20px; color: var(--accent); }
+
+.about-services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.about-service {
+  --service-color: #8dcaf4;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 220px;
+  padding: 19px 20px 22px;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--service-color);
+  border-radius: 8px;
+  background: var(--white);
+  transition: border-color .22s ease, background .22s ease, transform .22s ease;
+}
+.about-service:hover { transform: translateY(-3px); border-color: var(--service-color); background: color-mix(in srgb, var(--service-color) 7%, var(--white)); }
+.about-service--web { --service-color: #e4a3b8; }
+.about-service--data { --service-color: #9bd7b4; }
+html[data-theme="light"] .about-service--automation { --service-color: #286e99; }
+html[data-theme="light"] .about-service--web { --service-color: #a24f70; }
+html[data-theme="light"] .about-service--data { --service-color: #287b52; }
+.about-service-top { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 30px; color: var(--service-color); font-size: 12px; font-weight: 750; }
+.about-service-top span:last-child { font-size: 18px; line-height: 1; }
+.about-service h3 { color: var(--ink); font: 500 clamp(21px, 2vw, 27px)/1.14 var(--display); letter-spacing: -.025em; }
+.about-service p { max-width: 350px; margin-top: 11px; color: var(--muted); font-size: 13px; line-height: 1.56; }
+
+.about-toolbox {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 38px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.about-toolbox-label { margin-bottom: 7px; color: var(--accent); font-size: 12px; font-weight: 750; }
+.about-toolbox p:not(.about-toolbox-label) { max-width: 560px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+
+@media (max-width: 900px) {
+  .about-intro { grid-template-columns: 1fr; gap: 22px; }
+  .about-intro h2 { max-width: 700px; }
+  .about-service { padding-inline: 15px; }
+}
+@media (max-width: 680px) {
+  .about-section { padding-block: 58px 62px; }
+  .about-shell { gap: 30px; }
+  .about-intro h2 { font-size: clamp(41px, 9vw, 58px); }
+  .about-story > p:not(.about-role) { font-size: 14px; }
+  .about-services { grid-template-columns: 1fr; gap: 10px; }
+  .about-service { min-height: 0; padding: 15px 17px 17px; }
+  .about-service-top { margin-bottom: 10px; }
+  .about-service h3 { font-size: 23px; }
+  .about-service p { max-width: none; }
+  .about-toolbox { grid-template-columns: 1fr; gap: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-service { transition: none; }
+  .about-service:hover { transform: none; }
+}

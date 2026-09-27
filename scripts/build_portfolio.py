@@ -80,6 +80,7 @@ def render_card(project: dict) -> str:
     esc = html.escape
     image = project["slides"][0]
     detail = "./" + project["detail"]
+    demo = "./" + project["demo"]["href"]
     visual_class = {"automation": "visual--automation", "web-development": "visual--web", "data-operations": "visual--data"}[project["category"]]
     stack = " · ".join(project["stack"])
     return (
@@ -88,7 +89,10 @@ def render_card(project: dict) -> str:
         f'<img src="./{esc(image["src"])}" alt="{esc(image["alt"])}" width="1200" height="720" loading="lazy"><span class="project-visual-cta" aria-hidden="true">View gallery ↗</span></a>\n'
         f'            <div class="chapter-project-content"><div class="chapter-project-meta"><span>{esc(project["meta"][0])}</span><span>{esc(project["meta"][1])}</span></div>'
         f'<h3>{esc(project["title"])}</h3><p>{esc(project["summary"])}</p><p class="project-stack">{esc(stack)}</p>'
-        f'<a class="chapter-project-link" href="{esc(detail)}" data-open-project="{esc(project["id"])}">Explore project <span aria-hidden="true">↗</span></a></div>\n'
+        f'<div class="chapter-project-actions">'
+        f'<a class="chapter-project-link" href="{esc(detail)}">See more <span aria-hidden="true">↗</span></a>'
+        f'<a class="chapter-project-demo" href="{esc(demo)}">Try demo <span aria-hidden="true">↗</span></a>'
+        f'</div></div>\n'
         '          </article>'
     )
 
@@ -151,6 +155,8 @@ def main() -> None:
                 "label": "Try demo",
                 "note": "Guided sample with invented data, not the live system",
             }
+        if not safe_local_path(project["demo"]["href"]).is_file():
+            raise ValueError(f"{identifier}: demo page does not exist")
 
     page = INDEX.read_text(encoding="utf-8")
     for category in CATEGORIES:
